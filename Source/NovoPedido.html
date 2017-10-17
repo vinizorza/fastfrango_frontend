@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+
+    <script>
+
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+
+    function abrirCardapio(){
+      window.open('Cardapio.html');
+    }
+    function abrirRelatorio(){
+      window.open('Relatorio.html');
+    }
+    function abrirEstoque(){
+      window.open('Estoque.html');
+    }
+    function abrirCadBebida(){
+      window.open('CadastraBebida.html');
+    }
+    function abrirPedidos(){
+      window.open('Pedidos.html');
+    }
+    function abrirNovoPed(){
+      window.open('NovoPedido.html');
+    }
+    function abrirCadCombo(){
+      window.open('CadastraCombo.html');
+    }
+    function abrirCadPorcao(){
+      window.open('CadastraPorcao.html');
+    }
+    function abrirAltProdutos(){
+      window.open('AlteraProdutos.html');
+    }
+
+    </script>
+  
+
+<nav>
+    <div class="nav-wrapper orange darken-4">
+      <a class="brand-logo center">FastFrango</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="index.html">VOLTAR</a></li>
+          </ul>
+    </div>
+  </nav>
+
+
+  
+
+
+<div class="container center-align">
+
+    <div class="row" id="combos">
+            <div class="input-field col s12">
+                <select>
+                    <option value="" disabled selected>Escolha o combo</option>
+                    <option value="1">Batata Mega</option>
+                    <option value="2">Aipim Terra</option>
+                    <option value="3">Frango Nota</option>
+                </select>
+            </div>            
+    </div>
+
+    <div class="row">
+        <div class="">
+            <a class="waves-effect waves-light btn orange accent-3"><i class="material-icons left">add_circle</i>Adicionar Combo</a>
+        </div>
+    </div>
+</div>
+  
+
+
+
+  
+    
+  </body>
+</html>

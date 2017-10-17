@@ -15,13 +15,51 @@
     </head>
 
     <body>
+
+      <script>
+      function abrirCardapio(){
+        window.open('Cardapio.html');
+      }
+      function abrirRelatorio(){
+        window.open('Relatorio.html');
+      }
+      function abrirEstoque(){
+        window.open('Estoque.html');
+      }
+      function abrirCadBebida(){
+        window.open('CadastraBebida.html');
+      }
+      function abrirPedidos(){
+        window.open('Pedidos.html');
+      }
+      function abrirNovoPed(){
+        window.open('NovoPedido.html');
+      }
+      function abrirCadCombo(){
+        window.open('CadastraCombo.html');
+      }
+      function abrirCadPorcao(){
+        window.open('CadastraPorcao.html');
+      }
+      function abrirAltProdutos(){
+        window.open('AlteraProdutos.html');
+      }
+
+      </script>
 	
-	
+  
+  <nav>
+      <div class="nav-wrapper orange darken-4">
+        <a class="brand-logo center">FastFrango</a>
+      </div>
+    </nav>
+  
+
 	
 	<div class="container center-align">
 		<div class="row">
-			<div class="col s12 m3 ">
-          <div class="card light-blue darken-4" >
+			<div class="col s12 m3">
+          <div class="card light-blue darken-4" onclick="abrirCardapio();" >
             <div class="card-content white-text " >
               <span class="card-title" >CARDÁPIO<br/>&nbsp</span>
             </div>
@@ -29,7 +67,7 @@
         </div>
 		
 		<div class="col s12 m3">
-          <div class="card blue-grey darken-1">
+          <div class="card blue-grey darken-1" onclick="abrirRelatorio();">
             <div class="card-content white-text">
               <span class="card-title">RELATÓRIO<br/>&nbsp</span>
             </div>
@@ -38,14 +76,14 @@
 		
 		<div class="col s12 m3">
           <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
+            <div class="card-content white-text" onclick="abrirEstoque();">
               <span class="card-title">ESTOQUE<br/>&nbsp</span>
             </div>
           </div>
         </div>
 		
 		<div class="col s12 m3">
-          <div class="card blue-grey darken-1">
+          <div class="card blue-grey darken-1" onclick="abrirCadBebida();">
             <div class="card-content white-text purple accent-3">
               <span class="card-title ">CADASTRAR BEBIDA</span>
             </div>
@@ -57,7 +95,7 @@
 	  
 	  <div class="row">
 			<div class="col s12 m3">
-          <div class="card blue-grey darken-1 ">
+          <div class="card blue-grey darken-1" onclick="abrirPedidos();">
             <div class="card-content white-text pink accent-2">
               <span class="card-title">PEDIDOS <br/>&nbsp</span>
             </div>
@@ -65,7 +103,7 @@
         </div>
 		
 		<div class="col s12 m3">
-          <div class="card blue-grey darken-1">
+          <div class="card blue-grey darken-1" onclick="abrirNovoPed();">
             <div class="card-content white-text pink accent-2">
               <span class="card-title">NOVO PEDIDO<br/>&nbsp</span>
             </div>
@@ -73,7 +111,7 @@
         </div>
 		
 		<div class="col s12 m3">
-          <div class="card blue-grey darken-1">
+          <div class="card blue-grey darken-1" onclick="abrirCadCombo();">
             <div class="card-content white-text purple accent-3">
               <span class="card-title">CADASTRAR COMBO</span>
             </div>
@@ -81,7 +119,7 @@
         </div>
 		
 		<div class="col s12 m3">
-          <div class="card blue-grey darken-1">
+          <div class="card blue-grey darken-1" onclick="abrirCadPorcao();">
             <div class="card-content white-text purple accent-3">
               <span class="card-title">CADASTRAR PORÇÃO</span>
             </div>
@@ -93,7 +131,7 @@
 	  
 	  <div class="row">
 			<div class="col s12 m3">
-          <div class="card blue-grey darken-1">
+          <div class="card blue-grey darken-1" onclick="abrirAltProdutos();">
             <div class="card-content white-text light-blue darken-4">
               <span class="card-title">ALTERAR PRODUTOS</span>
             </div>
