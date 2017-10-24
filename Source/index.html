@@ -18,6 +18,13 @@
       <script src="controllers/HomeCtrl.js"></script>
       <script src="controllers/NovoPedidoCtrl.js"></script>
       <script src="controllers/CadastraComboCtrl.js"></script>
+      <script src="controllers/CadPorcaoCtrl.js"></script>
+      <script src="controllers/CardapioCtrl.js"></script>
+      <script src="controllers/PedidosCtrl.js"></script>
+      <script src="controllers/CadBebidaCtrl.js"></script>
+      <script src="controllers/AltProdCtrl.js"></script>
+      <script src="controllers/EstoqueCtrl.js"></script>
+      <script src="controllers/RelatorioCtrl.js"></script>
 
       
       <meta charset="utf8"/>
@@ -26,18 +33,27 @@
 
     <body ng-app="fastFrangoApp">
 
-  
+      <script>
+        $( document ).ready(function(){
+          $(".button-collapse").sideNav();
+          $('select').material_select();
+        })
+      </script>
+
       <nav>
-        <div class="nav-wrapper orange darken-4">
-          <a class="brand-logo center">FastFrango</a>
-        </div>
+          <div class="nav-wrapper deep-purple darken-4">
+            <a href="#!" class="brand-logo center">Fast Frango</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="{{host}}">INÍCIO</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+              <li><a href="{{host}}">INÍCIO</a></li>
+            </ul>
+          </div>
       </nav>
-
-      <div ng-view="">
-
-      </div>
-	
-	
+      
+      <div class="slide-animate" ng-view=""></div>
 
     </body>
   </html>

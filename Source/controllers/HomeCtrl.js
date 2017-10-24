@@ -1,21 +1,18 @@
 app.controller("HomeCtrl",function($scope){
-	
-	
-	
-	var host = location.protocol +"//"+ location.host;
-	
-	
-	
+		
+    var host = location.protocol +"//"+ location.host + "/fastfrango_frontend/Source";
+    $scope.host = host;
+    	
     $scope.opcoes = [		    
-        {nome: "Cardápio", src: host + "Cardapio.html"},
-        {nome: "Relatório", src:"Relatorio.html"},
-        {nome: "Estoque", src:"Estoque.html"},
-        {nome: "Cadastrar Bebida", src:"CadastraBebida.html"},
-        {nome: "Pedidos", src:"/novopedido"},
+        {nome: "Cardápio", src: host + "/#!/cardapio"},
+        {nome: "Relatório", src: host + "/#!/relatorio"},
+        {nome: "Estoque", src: host + "/#!/estoque"},
+        {nome: "Cadastrar Bebida", src: host + "/#!/cadastrarbebida"},
+        {nome: "Pedidos", src: host + "/#!/pedidos"},
         {nome: "Novo Pedido", src: host + "/#!/novopedido"},
-        {nome: "Cadastrar Combo", src:"CadastraCombo.html"},
-        {nome: "Cadastrar Porção", src:"CadastraPorcao.html"},
-        {nome: "Alterar Produto", src:"AlteraProdutos.html"},
+        {nome: "Cadastrar Combo", src: host + "/#!/cadastrarcombo"},
+        {nome: "Cadastrar Porção", src: host + "/#!/cadastrarporcao"},
+        {nome: "Alterar Produto", src: host + "/#!/alterarproduto"},
     ];
     
 });
