@@ -1,44 +1,9 @@
 <div class="container center-align">
     <div class="row">
+      <div ng-repeat="opcao in opcoes">
         <div class="col s12 m3">
-    <a class="waves-effect waves-light btn-large btn-index">CARDÁPIO</a>
-  </div>
-    
-  <div class="col s12 m3">
-    <a class="waves-effect waves-light btn-large btn-index">RELATÓRIO</a>
-  </div>
-  
-  <div class="col s12 m3">
-      <a class="waves-effect waves-light btn-large btn-index">ESTOQUE</a>
-  </div>
-  
-  <div class="col s12 m3">
-    <a class="waves-effect waves-light btn-large btn-index">CADASTRAR BEBIDA</a>
-  </div>
-</div>  
-
-    <div class="row">
-    <div class="col s12 m3">
-      <a class="waves-effect waves-light btn-large btn-index">PEDIDOS</a>
-    </div>
-  
-    <div class="col s12 m3">
-      <a class="waves-effect waves-light btn-large btn-index">NOVO PEDIDO</a>
-    </div>
-    
-    <div class="col s12 m3">
-        <a class="waves-effect waves-light btn-large btn-index">CADASTRAR COMBO</a>
-    </div>
-    
-    <div class="col s12 m3">
-      <a class="waves-effect waves-light btn-large btn-index">CADASTRAR PORÇÃO</a>
-    </div>
+          <a class="waves-effect waves-light btn-large btn-index" ng-href="/{{opcao.src}}">{{opcao.nome}}</a>
+        </div>
+      </div>
   </div>  
-  
-  
-  <div class="row">
-        <div class="col s12 m3">
-    <a class="waves-effect waves-light btn-large btn-index">ALTERAR PRODUTO</a>
-  </div>	
-</div>  
 </div>
