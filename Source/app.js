@@ -20,3 +20,9 @@ app.config(function($routeProvider){
     $routeProvider.otherwise({redirectTo:"/home"});
 
 });
+
+/*
+app.config(['$compileProvider', function ($compileProvider) {
+    $compileProvider.imgSrcSanitizationWhitelist(http);
+}]);
+*/
