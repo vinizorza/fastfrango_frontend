@@ -10,95 +10,110 @@
     <div class="card grey">
         <div class="card-content">
 
+            <!-- TITULO -->
             <h3>Novo Pedido</h3>
             <h5>{{combo}}</h5>
             <h5>{{combos}}</h5>
 
-            <div class="row">
-                <div class="col s12">
-                    <div class="card grey lighten-2">
-                        <div class="card-content">
-                            <span class="card-title">COMBO</span>
-                            <table class="striped centered bordered" ng-show="combos.length > 0">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Quantidade</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>                            
-                                <tbody>
-                                    <tr ng-repeat="combo in combos">
-                                        <td>{{combo.nome}}</td>
-                                        <td>{{combo.quantidade}}</td>
-                                        <td><a ng-click="excluirCombo($index)" class="waves-effect waves-light btn red">Excluir</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+            <!-- CARD COMBO -->
+            <div class="card grey lighten-2">
+                <div class="card-content">
+                    <span class="card-title">COMBO</span>
+                    <table class="striped centered bordered" ng-show="combos.length > 0">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Quantidade</th>
+                                <th></th>
+                            </tr>
+                        </thead>                            
+                        <tbody>
+                            <tr ng-repeat="combo in combos">
+                                <td>{{combo.nome}}</td>
+                                <td>{{combo.quantidade}}</td>
+                                <td><a ng-click="excluirCombo($index)" class="waves-effect waves-light btn red">Excluir</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                            <div class="row" id="combos">
-                                <div class="input-field col s8">
-                                    <select ng-model="combo.nome">
-                                        <option value="">Escolha o combo</option>
-                                        <option ng-repeat="comboCadastrado in combosCadastrados" value="{{comboCadastrado.nome}}">{{comboCadastrado.nome}}</option>
-                                    </select>
-                                </div>  
-                                <div class="input-field col s4">
-                                    <input placeholder="" id="quantidade" type="number" min="1" max="10" class="validate" ng-model="combo.quantidade">
-                                    <label for="quantidade">Quantidade</label>
-                                </div>   
-                                <div class="row">
-                                    <a class="waves-effect waves-light btn blue darken-4" ng-disabled="!combo.nome || !combo.quantidade" ng-click="adicionarCombo(combo)"><i class="material-icons left">add_circle</i>Adicionar Combo</a>
-                                 </div>
-                            </div>
-                        </div>
+                    <div class="row" style="margin-top:20px;">
+                        <div class="input-field col s8">
+                            <select ng-model="combo.nome">
+                                <option value="">Escolha o combo</option>
+                                <option ng-repeat="comboCadastrado in combosCadastrados" value="{{comboCadastrado.nome}}">{{comboCadastrado.nome}}</option>
+                            </select>
+                        </div>  
+                        <div class="input-field col s4">
+                            <input placeholder="" id="quantidade" type="number" min="1" max="10" class="validate" ng-model="combo.quantidade">
+                            <label for="quantidade">Quantidade</label>
+                        </div>   
                     </div>
-                    <div class="card grey lighten-2">
-                        <div class="card-content">
-                            <span class="card-title">PORÇÃO</span>
-                            <div class="row" id="combos">
-                                <div class="input-field col s8">
-                                    <select>
-                                        <option value="">Escolha o combo</option>
-                                        <option value="1">Batata Mega</option>
-                                        <option value="2">Aipim Terra</option>
-                                        <option value="3">Frango Nota</option>
-                                    </select>
-                                </div>  
-                                <div class="input-field col s4">
-                                    <input placeholder="" id="quantidade" type="number" min="1" max="10" class="validate">
-                                    <label for="quantidade">Quantidade</label>
-                                </div>   
-                                <div class="row">
-                                    <a class="waves-effect waves-light btn blue darken-4"><i class="material-icons left">add_circle</i>Adicionar Porção</a>
-                                </div>
-                            </div>
-                        </div>
+
+                    <a class="waves-effect waves-light btn blue darken-4" ng-disabled="!combo.nome || !combo.quantidade" ng-click="adicionarCombo(combo)"><i class="material-icons left">add_circle</i>Adicionar Combo</a>
+                       
+                </div>
+            </div>
+            
+            <!-- CARD PORÇÃO -->
+            <div class="card grey lighten-2">
+                <div class="card-content">
+                    <span class="card-title">PORÇÃO</span>
+                    <table class="striped centered bordered" ng-show="porcoes.length > 0">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Quantidade</th>
+                                <th></th>
+                            </tr>
+                        </thead>                            
+                        <tbody>
+                            <tr ng-repeat="porcao in porcoes">
+                                <td>{{porcao.nome}}</td>
+                                <td>{{porcao.quantidade}}</td>
+                                <td><a ng-click="excluirPorcao($index)" class="waves-effect waves-light btn red">Excluir</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="row" style="margin-top:20px;">
+                        <div class="input-field col s8">
+                            <select ng-model="porcao.nome">
+                                <option value="">Escolha a porção</option>
+                                <option ng-repeat="porcaoCadastrada in porcoesCadastradas" value="{{porcaoCadastrada.nome}}">{{porcaoCadastrada.nome}}</option>
+                            </select>
+                        </div>  
+                        <div class="input-field col s4">
+                            <input id="quantidade" type="number" min="1" max="10" class="validate" ng-model="porcao.quantidade">
+                            <label for="quantidade">Quantidade</label>
+                        </div>   
                     </div>
-                    <div class="card grey lighten-2">
-                        <div class="card-content">
-                            <div class="row" id="combos">
-                                    <div class="row">
-                                            <form class="col s12">
-                                                <div class="row">
-                                                <div class="input-field col s12">
-                                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                                    <label for="textarea1">OBSERVAÇÕES</label>
-                                                </div>
-                                                </div>
-                                            </form>
-                                            </div>  
-                                <div class="row">
-                                    <a class="waves-effect waves-light btn light-green darken-3"><i class="material-icons left">check</i>Cadastrar Pedido</a>
-                                </div>
-                                <div class="row">
-                                    <a class="waves-effect waves-light btn red"><i class="material-icons left">clear</i>Cancelar</a>
-                                </div>
+
+                    <a class="waves-effect waves-light btn blue darken-4" ng-disabled="!porcao.nome || !porcao.quantidade" ng-click="adicionarPorcao(porcao)"><i class="material-icons left">add_circle</i>Adicionar Porção</a>
+                       
+                </div>
+            </div>
+            
+            <!-- CARD FINALIZAR -->
+            <div class="card grey lighten-2">
+                <div class="card-content">
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="input-field col s12">
+                                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                <label for="textarea1">OBSERVAÇÕES</label>
                             </div>
-                        </div>
+                        </form>
+                    </div>  
+                    <div class="row">
+                        <a ng-disabled="porcoes.length == 0 &&  combos == 0" class="waves-effect waves-light btn light-green darken-3"><i class="material-icons left">check</i>Cadastrar Pedido</a>
+                    </div>
+                    <div class="row">
+                        <a ng-disabled="porcoes.length == 0 &&  combos == 0" class="waves-effect waves-light btn red"><i class="material-icons left">clear</i>Cancelar</a>
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
 </div>

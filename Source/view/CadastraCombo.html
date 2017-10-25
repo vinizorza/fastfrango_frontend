@@ -1,39 +1,72 @@
-<form class="col s12">
-	<div class="input-field col s6">
-		<input  id="nome" type="text" class="validate">
-		<label for="nome">Nome do Combo</label>
-	</div>  		
-	<div class="input-field col s6">
-		<input  id="preco" type="text" class="validate">
-		<label for="preco">Preço do Combo</label>
-	</div>  
-	<div class="input-field col s6">
-		<input  id="descricao" type="text" class="validate">
-		<label for="descricao">Descrição do Combo</label>
-	</div>  		     
-</form>	
-<div class="row">
-	<div class="input-field col s12">
-		<select id="QtdPorcao">
-			<option value="" disabled selected>Quantas Porções acompanham</option>
-			<option value="1">1 Porção</option>
-			<option value="2">2 Porções</option>
-			<option value="3">3 Porções</option>
-			<option value="4">4 Porções</option>
-			<option value="5">5 Porções</option>
-		</select>					
-	</div>
-</div>
-<form action="#">
-	<p>
-		<input type="checkbox" class="filled-in" id="filled-in-box"/>
-		<label for="filled-in-box">Exibir no cardápio(marque para exibir)</label>
-	</p>
-</form>
-<div class="row">
-<a class="waves-effect waves-light btn">Selecionar Imagem</a>
-</div>
-<div class="row">
-	<a class="waves-effect waves-light btn" href="index.html">Cadastrar Porção</a>
-	<a class="waves-effect waves-light btn" href="index.html">Voltar</a>
+<script>
+    $( document ).ready(function(){
+        $('select').material_select();
+        $('#textarea1').trigger('autoresize');
+    })
+</script>
+
+<div class="container center-align">
+
+    <div class="card grey">
+        <div class="card-content">
+
+            <!-- TITULO -->
+            <h3>Cadastrar Combo</h3>
+            <h5>{{combo}}</h5>
+			<h5>{{combos}}</h5>
+			
+			<!-- CARD FINALIZAR -->
+            <div class="card grey lighten-2">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="input-field col s6">
+							<input placeholder="Nome do combo" id="nome_combo" type="text" class="validate">
+							<label for="nome_combo">Nome do combo</label>
+						</div>
+						<div class="input-field col s3">
+							<input placeholder="Quantidade de porções" id="qtd_porcoes" type="number">
+							<label for="preco_combo">Quantidade de porcoes</label>
+						</div>
+						<div class="input-field col s3">
+							<input placeholder="Preço do combo" id="preco_combo" type="number">
+							<label for="preco_combo">Preco do combo</label>
+						</div>
+					</div>  
+					<div class="row">
+						<div class="input-field col s12">
+							<textarea id="descricao" class="materialize-textarea"></textarea>
+							<label for="descricao">Descrição</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="file-field input-field col s6">
+							<div class="btn">
+							  <span>IMAGEM</span>
+							  <input type="file">
+							</div>
+							<div class="file-path-wrapper">
+							  <input class="file-path validate" type="text">
+							</div>
+						</div>
+						<div class="col s6">
+							<p>
+								<input type="checkbox" id="test5" />
+								<label for="test5">Mostrar automaticamente no cardápio ao salvar</label>
+							</p>
+						</div>
+					</div>
+                    <div class="row">
+                        <a ng-disabled="" class="waves-effect waves-light btn light-green darken-3"><i class="material-icons left">check</i>Cadastrar Pedido</a>
+                    </div>
+                    <div class="row">
+                        <a ng-disabled="" class="waves-effect waves-light btn red"><i class="material-icons left">clear</i>Cancelar</a>
+                    </div>
+                </div>
+            </div>
+
+            
+
+
+        </div>
+    </div>
 </div>
