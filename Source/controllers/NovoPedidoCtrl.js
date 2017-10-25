@@ -4,16 +4,34 @@ app.controller("NovoPedidoCtrl",function($scope){
     $scope.porcoes = [];
     $scope.observacao = "";
 
+	$scope.getNumber = function(num){
+		return new Array(num);
+	}	
+	
+	
+    
+    $scope.complementos = [
+        {id:1, nome:"Batat Frita"},
+        {id:2, nome:"Aipim Frito"},
+        {id:3, nome:"Polenta Frita"},
+    ];
+    /*
     $scope.combosCadastrados = [
-        {id:"1", nome:"Kit Doidi"},
-        {id:"2", nome:"Vem Gordura"},
-        {id:"3", nome:"Ventania"},
+        {id:1, nome:"Kit Doidi", qntComplementos: 2, complementos:[]},
+        {id:2, nome:"Vem Gordura", qntComplementos: 3},
+        {id:3, nome:"Ventania", qntComplementos: 4},
+    ];
+	*/
+    $scope.combosCadastrados = [
+        {id:1, nome:"Kit Doidi", qntComplementos: 2},
+        {id:2, nome:"Vem Gordura", qntComplementos: 3},
+        {id:3, nome:"Ventania", qntComplementos: 4},
     ];
 
     $scope.porcoesCadastradas = [
-        {id:"1", nome:"Batata Suprema"},
-        {id:"2", nome:"Aipim Doido"},
-        {id:"3", nome:"Polenta Maluca"},
+        {id:1, nome:"Batata Suprema"},
+        {id:2, nome:"Aipim Doido"},
+        {id:3, nome:"Polenta Maluca"},
     ];
 
     $scope.adicionarCombo = function(combo){
