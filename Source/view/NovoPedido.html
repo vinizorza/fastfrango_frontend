@@ -12,9 +12,7 @@
 
             <!-- TITULO -->
             <h3>Novo Pedido</h3>
-            <h5>{{combo}}</h5>
             <h5>{{combos}}</h5>
-            <h5>{{combosCadastrados}}</h5>
 
             <!-- CARD COMBO -->
             <div class="card grey lighten-2">
@@ -41,7 +39,7 @@
 
                     <div class="row" style="margin-top:20px;">
                         <div class="input-field col s8">
-                            <select ng-model="combo.nome">
+                            <select ng-model="combo.nome"  ng-change="setQntComplemento(combo.nome)">
                                 <option value="">Escolha o combo</option>
                                 <option ng-repeat="comboCadastrado in combosCadastrados" value="{{comboCadastrado.nome}}">{{comboCadastrado.nome}}</option>
                             </select>
@@ -51,13 +49,22 @@
                             <label for="quantidade">Quantidade</label>
                         </div>   
                     </div>
-                    <div class="row">
-						<select ng-repeat="complemento in getNumber(comboCadastrado.qntComplementos)">
-							<option value="">Escolha o complemento</option>
-							<option ng-repeat="comboCadastrado in combosCadastrados" value="{{comboCadastrado.nome}}">{{comboCadastrado.nome}}</option>
-                        </select>
+                    <!-- Expressão no ng-repeat apenas para o laço poder rodar a quantidade de complementos que o combo possue (Gambiarra)-->
+                    <div class="row"  ng-repeat="aux in qntComplementos track by $index">
+                        <script>
+                            $( document ).ready(function(){
+                                $('select').material_select();
+                            })
+                        </script>
+                        <div class="input-field col s12">
+                            <select ng-model="ComplementosAux[$index]">
+                                <option value="" disabled selected>Escolha o complemento</option>
+                                <option value="{{complemento.nome}}" ng-repeat="complemento in complementos">{{complemento.nome}}</option>
+                            </select>
+                            <label>Complemento {{$index + 1}}</label>
+                        </div>
 					</div>	
-
+                   
                     <a class="waves-effect waves-light btn blue darken-4" ng-disabled="!combo.nome || !combo.quantidade" ng-click="adicionarCombo(combo)"><i class="material-icons left">add_circle</i>Adicionar Combo</a>
                        
                 </div>

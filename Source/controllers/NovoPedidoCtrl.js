@@ -4,6 +4,31 @@ app.controller("NovoPedidoCtrl",function($scope){
     $scope.porcoes = [];
     $scope.observacao = "";
 
+    // Variaveis Auxiliares
+    $scope.qntComplementos = [];
+    $scope.ComplementosAux = [];
+
+    $scope.setQntComplemento = function(nome){       
+       for(var i = 0; i < $scope.combosCadastrados.length; i++){
+            if(nome == $scope.combosCadastrados[i].nome){
+                $scope.qntComplementos = new Array($scope.combosCadastrados[i].qntComplementos);
+            }
+        }
+    }
+    
+
+    $scope.getQntComplemento = function(nome){
+        alert(nome);
+        // for(var i = 0; i < combosCadastrados.length; i++){
+
+        // }
+        // for(comboCadastrado in combosCadastrados){
+        //     if(nome == comboCadastrado.nome){
+        //         alert(comboCadastrado.qntComplementos);
+        //     }
+        // }
+	}	
+
 	$scope.getNumber = function(num){
 		return new Array(num);
 	}	
@@ -35,6 +60,7 @@ app.controller("NovoPedidoCtrl",function($scope){
     ];
 
     $scope.adicionarCombo = function(combo){
+        combo.complementos = $scope.ComplementosAux;
         $scope.combos.push(angular.copy(combo));
         delete $scope.combo;
     };
@@ -42,6 +68,7 @@ app.controller("NovoPedidoCtrl",function($scope){
     $scope.adicionarPorcao = function(porcao){
         $scope.porcoes.push(angular.copy(porcao));
         delete $scope.porcao;
+        delete $scope.ComplementosAux;
     };
 
     $scope.excluirCombo = function(index){
