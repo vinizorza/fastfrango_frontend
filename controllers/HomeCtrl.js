@@ -1,6 +1,9 @@
 app.controller("HomeCtrl",function($scope){
 		
-    var host = location.protocol +"//"+ location.host + "/fastfrango_frontend/Source";
+    var host = location.protocol +"//"+ location.host;
+    
+    //Caso não baixar o projeto com o index na raiz do servidor, concatene a linha abaixo no host
+    // + "/fastfrango_frontend/";
     $scope.host = host;
     	
     $scope.opcoes = [		    
