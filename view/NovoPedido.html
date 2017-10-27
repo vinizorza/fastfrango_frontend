@@ -12,7 +12,6 @@
 
             <!-- TITULO -->
             <h3>Novo Pedido</h3>
-            <h5>{{combos}}</h5>
 
             <!-- CARD COMBO -->
             <div class="card grey lighten-2">
@@ -108,6 +107,47 @@
                        
                 </div>
             </div>
+
+
+            <!-- CARD BEBIDA -->
+            <div class="card grey lighten-2">
+                <div class="card-content">
+                    <span class="card-title">BEBIDA</span>
+                    <table class="striped centered bordered" ng-show="bebidas.length > 0">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Quantidade</th>
+                                <th></th>
+                            </tr>
+                        </thead>                            
+                        <tbody>
+                            <tr ng-repeat="bebida in bebidas">
+                                <td>{{bebida.nome}}</td>
+                                <td>{{bebida.quantidade}}</td>
+                                <td><a ng-click="excluirBebida($index)" class="waves-effect waves-light btn red">Excluir</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="row" style="margin-top:20px;">
+                        <div class="input-field col s8">
+                            <select ng-model="bebida.nome">
+                                <option value="">Escolha a bebida</option>
+                                <option ng-repeat="bebidaCadastrada in bebidasCadastradas" value="{{bebidaCadastrada.nome}}">{{bebidaCadastrada.nome}}</option>
+                            </select>
+                        </div>  
+                        <div class="input-field col s4">
+                            <input id="quantidade" type="number" min="1" max="10" class="validate" ng-model="bebida.quantidade">
+                            <label for="quantidade">Quantidade</label>
+                        </div>   
+                    </div>
+
+                    <a class="waves-effect waves-light btn blue darken-4" ng-disabled="!bebida.nome || !bebida.quantidade" ng-click="adicionarBebida(bebida)"><i class="material-icons left">add_circle</i>Adicionar Bebida</a>
+                       
+                </div>
+            </div>
+
             
             <!-- CARD FINALIZAR -->
             <div class="card grey lighten-2">

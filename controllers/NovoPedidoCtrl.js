@@ -2,6 +2,7 @@ app.controller("NovoPedidoCtrl",function($scope){
 
     $scope.combos = [];
     $scope.porcoes = [];
+    $scope.bebidas = [];
     $scope.observacao = "";
 
     // Variaveis Auxiliares
@@ -15,38 +16,17 @@ app.controller("NovoPedidoCtrl",function($scope){
             }
         }
     }
-    
-
-    $scope.getQntComplemento = function(nome){
-        alert(nome);
-        // for(var i = 0; i < combosCadastrados.length; i++){
-
-        // }
-        // for(comboCadastrado in combosCadastrados){
-        //     if(nome == comboCadastrado.nome){
-        //         alert(comboCadastrado.qntComplementos);
-        //     }
-        // }
-	}	
 
 	$scope.getNumber = function(num){
 		return new Array(num);
-	}	
-	
-	
+    }	
     
     $scope.complementos = [
         {id:1, nome:"Batat Frita"},
         {id:2, nome:"Aipim Frito"},
         {id:3, nome:"Polenta Frita"},
     ];
-    /*
-    $scope.combosCadastrados = [
-        {id:1, nome:"Kit Doidi", qntComplementos: 2, complementos:[]},
-        {id:2, nome:"Vem Gordura", qntComplementos: 3},
-        {id:3, nome:"Ventania", qntComplementos: 4},
-    ];
-	*/
+
     $scope.combosCadastrados = [
         {id:1, nome:"Kit Doidi", qntComplementos: 2},
         {id:2, nome:"Vem Gordura", qntComplementos: 3},
@@ -57,6 +37,12 @@ app.controller("NovoPedidoCtrl",function($scope){
         {id:1, nome:"Batata Suprema"},
         {id:2, nome:"Aipim Doido"},
         {id:3, nome:"Polenta Maluca"},
+    ];
+
+    $scope.bebidasCadastradas = [
+        {id:1, nome:"Coca Cola 2L"},
+        {id:2, nome:"Suco Laranja 300ml"},
+        {id:3, nome:"Cerveja Brahma Lata"},
     ];
 
     $scope.adicionarCombo = function(combo){
@@ -71,12 +57,21 @@ app.controller("NovoPedidoCtrl",function($scope){
         delete $scope.ComplementosAux;
     };
 
+    $scope.adicionarBebida = function(bebida){
+        $scope.bebidas.push(angular.copy(bebida));
+        delete $scope.bebida;
+    };
+
     $scope.excluirCombo = function(index){
         $scope.combos.splice(index, 1);
     };
 
     $scope.excluirPorcao = function(index){
         $scope.porcoes.splice(index, 1);
+    };
+
+    $scope.excluirBebida = function(index){
+        $scope.bebidas.splice(index, 1);
     };
     
     
