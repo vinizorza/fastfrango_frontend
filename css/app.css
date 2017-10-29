@@ -3,3 +3,15 @@
     height: 2em;
     margin-top: 20px;
 }
+
+.ativado{
+     background-color: #66bb6a;
+}
+
+.desativado{
+     background-color:#ef5350;
+}
+
+.menu{
+     margin-bottom: 20px;
+}

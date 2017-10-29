@@ -1,1 +1,31 @@
-teste
+<div class="container center-align">
+
+     <div class="card grey lighten-1">
+          <div class="card-content">
+
+               <h3>Itens do cardápio</h3>
+               <table class="bordered menu">
+                    <thead>
+                         <tr>
+                              <th>Desativar</th>
+                              <th>Nome</th>
+                              <th>Preço</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+
+                         <tr ng-class="{desativado:item.desativado, ativado:!item.desativado}" ng-repeat="item in cardapio">
+                              <td><input type="checkbox" id="{{item.id}}" ng-model="item.desativado" ng-click="verificaEstado(item)"/><label for="{{item.id}}"></label></td>
+                              <td>{{item.nome}}</td>
+                              <td>{{item.preco}}</td>
+                         </tr>
+
+                    </tbody>
+               </table>
+
+               <a class="waves-effect waves-light btn red" ng-click="salvaModificacoes()" ng-disabled="!isItemDesativado()">Salvar</a>
+
+
+          </div>
+     </div>
+</div>

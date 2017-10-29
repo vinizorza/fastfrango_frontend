@@ -32,9 +32,19 @@ app.config(function($routeProvider){
         templateUrl:"view/Pedidos.html"
     });
 
-    $routeProvider.when("/cadastrarbebida",{
-        controller:"CadBebidaCtrl",
-        templateUrl:"view/CadastraBebida.html"
+    $routeProvider.when("/bebidas",{
+        controller:"BebidasCtrl",
+        templateUrl:"view/bebidas.html"
+    });
+
+    $routeProvider.when("/bebidas/nova",{
+       controller:"BebidasCtrl",
+       templateUrl:"view/Bebida.html"
+    });
+
+    $routeProvider.when("/bebidas/editar/:bebidaId",{
+       controller:"BebidasCtrl",
+       templateUrl:"view/Bebida.html"
     });
 
     $routeProvider.when("/estoque",{

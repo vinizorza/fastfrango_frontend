@@ -1,0 +1,38 @@
+<div class="container center-align">
+     <div class="card grey lighten-1">
+          <div class="card-content">
+               <h4>Cadastrar Bebida</h4>
+               <form class="col s12" name="cadastroBebida">
+                    <div class="input-field col s6">
+                         <input  id="bebida" name="nome" type="text" class="validate" ng-model="bebida.nome" ng-required="true">
+                         <label for="bebida">Nome da Bebida</label>
+                         <div class="card-panel red lighten-1" ng-show="cadastroBebida.nome.$error.required && cadastroBebida.nome.$dirty">
+                              Por favor, preencha o nome da bebida!
+                         </div>
+                    </div>
+                    <div class="input-field col s6">
+                         <input  id="precoBebida" name="preco" type="text" class="validate" ng-model="bebida.preco" ng-required="true" ng-pattern="/^\d+.\d+$/">
+                         <label for="precoBebida">Preço da Bebida (R$)</label>
+                         <div class="card-panel red lighten-1" ng-show="cadastroBebida.preco.$error.required && cadastroBebida.preco.$dirty">
+                              Por favor, preencha o preço da bebida!
+                         </div>
+                         <div class="card-panel red lighten-1" ng-show="cadastroBebida.preco.$error.pattern">
+                              O campo preço deve ter o formato 0.0!
+                         </div>
+                    </div>
+               </form>
+
+               <form action="#">
+                    <p>
+                         <input type="checkbox" class="filled-in" id="filled-in-box"/>
+                         <label for="filled-in-box">Exibir no cardápio(marque para exibir)</label>
+                    </p>
+               </form>
+
+               <div class="row">
+                    <a class="waves-effect waves-light btn" ng-disabled="cadastroBebida.$invalid" ng-click="cadastraBebida(bebida)">Cadastrar Bebida</a>
+                    <a class="waves-effect waves-light btn" href="#!/bebidas">Voltar</a>
+               </div>
+          </div>
+     </div>
+</div>
