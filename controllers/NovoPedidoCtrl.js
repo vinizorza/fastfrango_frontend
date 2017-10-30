@@ -3,6 +3,7 @@ app.controller("NovoPedidoCtrl",function($scope){
     $scope.combos = [];
     $scope.porcoes = [];
     $scope.bebidas = [];
+    $scope.precoFinal = 0;
     $scope.observacao = "";
 
     // Variaveis Auxiliares
@@ -21,28 +22,23 @@ app.controller("NovoPedidoCtrl",function($scope){
 		return new Array(num);
     }	
     
-    $scope.complementos = [
-        {id:1, nome:"Batat Frita"},
-        {id:2, nome:"Aipim Frito"},
-        {id:3, nome:"Polenta Frita"},
-    ];
 
     $scope.combosCadastrados = [
-        {id:1, nome:"Kit Doidi", qntComplementos: 2},
-        {id:2, nome:"Vem Gordura", qntComplementos: 3},
-        {id:3, nome:"Ventania", qntComplementos: 4},
+        {id:1, nome:"Kit Doidi", qntComplementos: 2, preco: 32.5},
+        {id:2, nome:"Vem Gordura", qntComplementos: 3, preco: 40.5},
+        {id:3, nome:"Ventania", qntComplementos: 4, preco: 25.6},
     ];
 
     $scope.porcoesCadastradas = [
-        {id:1, nome:"Batata Suprema"},
-        {id:2, nome:"Aipim Doido"},
-        {id:3, nome:"Polenta Maluca"},
+        {id:1, nome:"Batata Suprema", preco: 12.5},
+        {id:2, nome:"Aipim Doido", preco: 10.5},
+        {id:3, nome:"Polenta Maluca", preco: 8.5},
     ];
 
     $scope.bebidasCadastradas = [
-        {id:1, nome:"Coca Cola 2L"},
-        {id:2, nome:"Suco Laranja 300ml"},
-        {id:3, nome:"Cerveja Brahma Lata"},
+        {id:1, nome:"Coca Cola 2L", preco: 8.5},
+        {id:2, nome:"Suco Laranja 300ml", preco: 4.5},
+        {id:3, nome:"Cerveja Brahma Lata", preco: 6.5},
     ];
 
     $scope.adicionarCombo = function(combo){

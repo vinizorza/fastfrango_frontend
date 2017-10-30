@@ -40,7 +40,7 @@
                         <div class="input-field col s8">
                             <select ng-model="combo.nome"  ng-change="setQntComplemento(combo.nome)">
                                 <option value="">Escolha o combo</option>
-                                <option ng-repeat="comboCadastrado in combosCadastrados" value="{{comboCadastrado.nome}}">{{comboCadastrado.nome}}</option>
+                                <option ng-repeat="comboCadastrado in combosCadastrados" value="{{comboCadastrado.nome}}">{{comboCadastrado.nome}} - R$ {{comboCadastrado.preco}}</option>
                             </select>
                         </div>  
                         <div class="input-field col s4">
@@ -58,7 +58,7 @@
                         <div class="input-field col s12">
                             <select ng-model="ComplementosAux[$index]">
                                 <option value="" disabled selected>Escolha o complemento</option>
-                                <option value="{{complemento.nome}}" ng-repeat="complemento in complementos">{{complemento.nome}}</option>
+                                <option value="{{complemento.nome}}" ng-repeat="complemento in porcoesCadastradas">{{complemento.nome}}</option>
                             </select>
                             <label>Complemento {{$index + 1}}</label>
                         </div>
@@ -94,7 +94,7 @@
                         <div class="input-field col s8">
                             <select ng-model="porcao.nome">
                                 <option value="">Escolha a porção</option>
-                                <option ng-repeat="porcaoCadastrada in porcoesCadastradas" value="{{porcaoCadastrada.nome}}">{{porcaoCadastrada.nome}}</option>
+                                <option ng-repeat="porcaoCadastrada in porcoesCadastradas" value="{{porcaoCadastrada.nome}}">{{porcaoCadastrada.nome}} - R$ {{porcaoCadastrada.preco}}</option>
                             </select>
                         </div>  
                         <div class="input-field col s4">
@@ -134,7 +134,7 @@
                         <div class="input-field col s8">
                             <select ng-model="bebida.nome">
                                 <option value="">Escolha a bebida</option>
-                                <option ng-repeat="bebidaCadastrada in bebidasCadastradas" value="{{bebidaCadastrada.nome}}">{{bebidaCadastrada.nome}}</option>
+                                <option ng-repeat="bebidaCadastrada in bebidasCadastradas" value="{{bebidaCadastrada.nome}}">{{bebidaCadastrada.nome}} - R$ {{bebidaCadastrada.preco}}</option>
                             </select>
                         </div>  
                         <div class="input-field col s4">
@@ -159,6 +159,9 @@
                                 <label for="textarea1">OBSERVAÇÕES</label>
                             </div>
                         </form>
+                    </div>
+                    <div class="row">
+                        <h3>TOTAL: R$ {{precoFinal}}</h3>
                     </div>  
                     <div class="row">
                         <a ng-disabled="porcoes.length == 0 &&  combos == 0" class="waves-effect waves-light btn light-green darken-3"><i class="material-icons left">check</i>Cadastrar Pedido</a>
