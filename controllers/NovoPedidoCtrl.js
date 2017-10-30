@@ -36,9 +36,9 @@ app.controller("NovoPedidoCtrl",function($scope){
     ];
 
     $scope.bebidasCadastradas = [
-        {id:1, nome:"Coca Cola 2L", preco: 8.5},
-        {id:2, nome:"Suco Laranja 300ml", preco: 4.5},
-        {id:3, nome:"Cerveja Brahma Lata", preco: 6.5},
+        {nome:"Coca Cola 2L", preco: 8.5},
+        {nome:"Suco Laranja 300ml", preco: 4.5},
+        {nome:"Cerveja Brahma Lata", preco: 6.5},
     ];
 
     $scope.adicionarCombo = function(combo){
@@ -53,9 +53,14 @@ app.controller("NovoPedidoCtrl",function($scope){
         delete $scope.ComplementosAux;
     };
 
-    $scope.adicionarBebida = function(bebida){
+    $scope.adicionarBebida = function(bebida, qntBebida){
+        bebida = JSON.parse(bebida);
+        bebida.quantidade = qntBebida;        
         $scope.bebidas.push(angular.copy(bebida));
+        console.log($scope.bebidas);  
+        $scope.precoFinal += bebida.quantidade * bebida.preco;
         delete $scope.bebida;
+        delete $scope.qntBebida;
     };
 
     $scope.excluirCombo = function(index){

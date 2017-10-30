@@ -110,21 +110,25 @@
 
 
             <!-- CARD BEBIDA -->
+            
             <div class="card grey lighten-2">
                 <div class="card-content">
+                    {{qntBebida}}
                     <span class="card-title">BEBIDA</span>
                     <table class="striped centered bordered" ng-show="bebidas.length > 0">
                         <thead>
                             <tr>
                                 <th>Nome</th>
                                 <th>Quantidade</th>
+                                <th>Preço</th>
                                 <th></th>
                             </tr>
                         </thead>                            
                         <tbody>
-                            <tr ng-repeat="bebida in bebidas">
+                            <tr ng-repeat="bebida in bebidas track by $index">
                                 <td>{{bebida.nome}}</td>
                                 <td>{{bebida.quantidade}}</td>
+                                <td>{{bebida.quantidade * bebida.preco}}</td>
                                 <td><a ng-click="excluirBebida($index)" class="waves-effect waves-light btn red">Excluir</a></td>
                             </tr>
                         </tbody>
@@ -132,18 +136,18 @@
 
                     <div class="row" style="margin-top:20px;">
                         <div class="input-field col s8">
-                            <select ng-model="bebida.nome">
+                            <select ng-model="bebida">
                                 <option value="">Escolha a bebida</option>
-                                <option ng-repeat="bebidaCadastrada in bebidasCadastradas" value="{{bebidaCadastrada.nome}}">{{bebidaCadastrada.nome}} - R$ {{bebidaCadastrada.preco}}</option>
+                                <option ng-repeat="bebidaCadastrada in bebidasCadastradas" value="{{bebidaCadastrada}}">{{bebidaCadastrada.nome}} - R$ {{bebidaCadastrada.preco}}</option>
                             </select>
                         </div>  
                         <div class="input-field col s4">
-                            <input id="quantidade" type="number" min="1" max="10" class="validate" ng-model="bebida.quantidade">
+                            <input id="quantidade" type="number" min="1" max="10" class="validate" ng-model="qntBebida">
                             <label for="quantidade">Quantidade</label>
                         </div>   
                     </div>
 
-                    <a class="waves-effect waves-light btn blue darken-4" ng-disabled="!bebida.nome || !bebida.quantidade" ng-click="adicionarBebida(bebida)"><i class="material-icons left">add_circle</i>Adicionar Bebida</a>
+                    <a class="waves-effect waves-light btn blue darken-4" ng-disabled="!bebida || !qntBebida" ng-click="adicionarBebida(bebida, qntBebida)"><i class="material-icons left">add_circle</i>Adicionar Bebida</a>
                        
                 </div>
             </div>
