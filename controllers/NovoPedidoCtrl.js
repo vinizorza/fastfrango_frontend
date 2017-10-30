@@ -47,10 +47,14 @@ app.controller("NovoPedidoCtrl",function($scope){
         delete $scope.combo;
     };
 
-    $scope.adicionarPorcao = function(porcao){
+    $scope.adicionarPorcao = function(porcao, qntPorcao){
+        porcao = JSON.parse(porcao);
+        porcao.quantidade = qntPorcao;
         $scope.porcoes.push(angular.copy(porcao));
+        console.log($scope.porcoes);
+        $scope.precoFinal += porcao.quantidade * porcao.preco;
         delete $scope.porcao;
-        delete $scope.ComplementosAux;
+        delete $scope.qntPorcao;
     };
 
     $scope.adicionarBebida = function(bebida, qntBebida){
@@ -64,14 +68,17 @@ app.controller("NovoPedidoCtrl",function($scope){
     };
 
     $scope.excluirCombo = function(index){
+        $scope.precoFinal -= $scope.combos[index].quantidade * $scope.combos[index].preco;
         $scope.combos.splice(index, 1);
     };
 
     $scope.excluirPorcao = function(index){
+        $scope.precoFinal -= $scope.porcoes[index].quantidade * $scope.porcoes[index].preco;
         $scope.porcoes.splice(index, 1);
     };
 
     $scope.excluirBebida = function(index){
+        $scope.precoFinal -= $scope.bebidas[index].quantidade * $scope.bebidas[index].preco;
         $scope.bebidas.splice(index, 1);
     };
     

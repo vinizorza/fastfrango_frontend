@@ -78,13 +78,15 @@
                             <tr>
                                 <th>Nome</th>
                                 <th>Quantidade</th>
+                                <th>Preço</th>
                                 <th></th>
                             </tr>
                         </thead>                            
                         <tbody>
-                            <tr ng-repeat="porcao in porcoes">
+                            <tr ng-repeat="porcao in porcoes track by $index">
                                 <td>{{porcao.nome}}</td>
                                 <td>{{porcao.quantidade}}</td>
+                                <td>{{porcao.quantidade * porcao.preco}}</td>
                                 <td><a ng-click="excluirPorcao($index)" class="waves-effect waves-light btn red">Excluir</a></td>
                             </tr>
                         </tbody>
@@ -92,18 +94,18 @@
 
                     <div class="row" style="margin-top:20px;">
                         <div class="input-field col s8">
-                            <select ng-model="porcao.nome">
+                            <select ng-model="porcao">
                                 <option value="">Escolha a porção</option>
-                                <option ng-repeat="porcaoCadastrada in porcoesCadastradas" value="{{porcaoCadastrada.nome}}">{{porcaoCadastrada.nome}} - R$ {{porcaoCadastrada.preco}}</option>
+                                <option ng-repeat="porcaoCadastrada in porcoesCadastradas" value="{{porcaoCadastrada}}">{{porcaoCadastrada.nome}} - R$ {{porcaoCadastrada.preco}}</option>
                             </select>
                         </div>  
                         <div class="input-field col s4">
-                            <input id="quantidade" type="number" min="1" max="10" class="validate" ng-model="porcao.quantidade">
+                            <input id="quantidade" type="number" min="1" max="10" class="validate" ng-model="qntPorcao">
                             <label for="quantidade">Quantidade</label>
                         </div>   
                     </div>
 
-                    <a class="waves-effect waves-light btn blue darken-4" ng-disabled="!porcao.nome || !porcao.quantidade" ng-click="adicionarPorcao(porcao)"><i class="material-icons left">add_circle</i>Adicionar Porção</a>
+                    <a class="waves-effect waves-light btn blue darken-4" ng-disabled="!porcao || !qntPorcao" ng-click="adicionarPorcao(porcao, qntPorcao)"><i class="material-icons left">add_circle</i>Adicionar Porção</a>
                        
                 </div>
             </div>
