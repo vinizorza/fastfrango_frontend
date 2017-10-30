@@ -10,17 +10,27 @@ app.controller("NovoPedidoCtrl",function($scope){
     $scope.qntComplementos = [];
     $scope.ComplementosAux = [];
 
-    $scope.setQntComplemento = function(nome){       
-       for(var i = 0; i < $scope.combosCadastrados.length; i++){
-            if(nome == $scope.combosCadastrados[i].nome){
-                $scope.qntComplementos = new Array($scope.combosCadastrados[i].qntComplementos);
-            }
-        }
+    $scope.setQntComplemento = function(combo){    
+        combo = JSON.parse(combo);   
+        $scope.qntComplementos = new Array(combo.qntComplementos);
     }
 
 	$scope.getNumber = function(num){
 		return new Array(num);
     }	
+
+    $scope.getStringComplementos = function(complementos){
+        var stringComplementos = "";
+        for(var i = 0; i < complementos.length; i++){
+            if(i == (complementos.length - 1)){
+                stringComplementos = stringComplementos + JSON.parse(complementos[i]).nome;
+            }else{
+                stringComplementos = stringComplementos + JSON.parse(complementos[i]).nome + ", ";
+            }
+            
+        }
+        return stringComplementos;
+    }
     
 
     $scope.combosCadastrados = [
@@ -41,17 +51,21 @@ app.controller("NovoPedidoCtrl",function($scope){
         {nome:"Cerveja Brahma Lata", preco: 6.5},
     ];
 
-    $scope.adicionarCombo = function(combo){
+    $scope.adicionarCombo = function(combo, qntCombo){
+        combo = JSON.parse(combo);
+        combo.quantidade = qntCombo;
         combo.complementos = $scope.ComplementosAux;
         $scope.combos.push(angular.copy(combo));
-        delete $scope.combo;
+        $scope.precoFinal += combo.quantidade * combo.preco;
+        // delete $scope.combo;
+        // delete $scope.qntCombo;
+        $scope.ComplementosAux = [];
     };
 
     $scope.adicionarPorcao = function(porcao, qntPorcao){
         porcao = JSON.parse(porcao);
         porcao.quantidade = qntPorcao;
         $scope.porcoes.push(angular.copy(porcao));
-        console.log($scope.porcoes);
         $scope.precoFinal += porcao.quantidade * porcao.preco;
         delete $scope.porcao;
         delete $scope.qntPorcao;
@@ -61,7 +75,6 @@ app.controller("NovoPedidoCtrl",function($scope){
         bebida = JSON.parse(bebida);
         bebida.quantidade = qntBebida;        
         $scope.bebidas.push(angular.copy(bebida));
-        console.log($scope.bebidas);  
         $scope.precoFinal += bebida.quantidade * bebida.preco;
         delete $scope.bebida;
         delete $scope.qntBebida;

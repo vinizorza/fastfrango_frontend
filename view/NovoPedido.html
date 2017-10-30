@@ -16,6 +16,7 @@
             <!-- CARD COMBO -->
             <div class="card grey lighten-2">
                 <div class="card-content">
+                    {{ComplementosAux}}
                     <span class="card-title">COMBO</span>
                     <table class="striped centered bordered" ng-show="combos.length > 0">
                         <thead>
@@ -23,14 +24,16 @@
                                 <th>Nome</th>
                                 <th>Quantidade</th>
                                 <th>Complementos</th>
+                                <th>Preço</th>
                                 <th></th>
                             </tr>
                         </thead>                            
                         <tbody>
-                            <tr ng-repeat="combo in combos">
+                            <tr ng-repeat="combo in combos track by $index">
                                 <td>{{combo.nome}}</td>
                                 <td>{{combo.quantidade}}</td>
-                                <td>{{combo.complementos}}</td>
+                                <td>{{getStringComplementos(combo.complementos)}}</td>
+                                <td>{{combo.quantidade * combo.preco}}</td>
                                 <td><a ng-click="excluirCombo($index)" class="waves-effect waves-light btn red">Excluir</a></td>
                             </tr>
                         </tbody>
@@ -38,13 +41,13 @@
 
                     <div class="row" style="margin-top:20px;">
                         <div class="input-field col s8">
-                            <select ng-model="combo.nome"  ng-change="setQntComplemento(combo.nome)">
+                            <select ng-model="combo"  ng-change="setQntComplemento(combo)">
                                 <option value="">Escolha o combo</option>
-                                <option ng-repeat="comboCadastrado in combosCadastrados" value="{{comboCadastrado.nome}}">{{comboCadastrado.nome}} - R$ {{comboCadastrado.preco}}</option>
+                                <option ng-repeat="comboCadastrado in combosCadastrados" value="{{comboCadastrado}}">{{comboCadastrado.nome}} - R$ {{comboCadastrado.preco}}</option>
                             </select>
                         </div>  
                         <div class="input-field col s4">
-                            <input placeholder="" id="quantidade" type="number" min="1" max="10" class="validate" ng-model="combo.quantidade">
+                            <input placeholder="" id="quantidade" type="number" min="1" max="10" class="validate" ng-model="qntCombo">
                             <label for="quantidade">Quantidade</label>
                         </div>   
                     </div>
@@ -58,13 +61,13 @@
                         <div class="input-field col s12">
                             <select ng-model="ComplementosAux[$index]">
                                 <option value="" disabled selected>Escolha o complemento</option>
-                                <option value="{{complemento.nome}}" ng-repeat="complemento in porcoesCadastradas">{{complemento.nome}}</option>
+                                <option value="{{complemento}}" ng-repeat="complemento in porcoesCadastradas">{{complemento.nome}}</option>
                             </select>
                             <label>Complemento {{$index + 1}}</label>
                         </div>
 					</div>	
                    
-                    <a class="waves-effect waves-light btn blue darken-4" ng-disabled="!combo.nome || !combo.quantidade" ng-click="adicionarCombo(combo)"><i class="material-icons left">add_circle</i>Adicionar Combo</a>
+                    <a class="waves-effect waves-light btn blue darken-4" ng-disabled="!combo || !qntCombo" ng-click="adicionarCombo(combo, qntCombo)"><i class="material-icons left">add_circle</i>Adicionar Combo</a>
                        
                 </div>
             </div>
@@ -115,7 +118,6 @@
             
             <div class="card grey lighten-2">
                 <div class="card-content">
-                    {{qntBebida}}
                     <span class="card-title">BEBIDA</span>
                     <table class="striped centered bordered" ng-show="bebidas.length > 0">
                         <thead>
@@ -167,7 +169,7 @@
                         </form>
                     </div>
                     <div class="row">
-                        <h3>TOTAL: R$ {{precoFinal}}</h3>
+                        <h3>R$ {{precoFinal}}</h3>
                     </div>  
                     <div class="row">
                         <a ng-disabled="porcoes.length == 0 &&  combos == 0" class="waves-effect waves-light btn light-green darken-3"><i class="material-icons left">check</i>Cadastrar Pedido</a>
