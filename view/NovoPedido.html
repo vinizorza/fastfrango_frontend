@@ -16,6 +16,7 @@
             <!-- CARD COMBO -->
             <div class="card grey lighten-2">
                 <div class="card-content">
+                    {{ComplementosAux}}
                     <span class="card-title">COMBO</span>
                     <table class="striped centered bordered" ng-show="combos.length > 0">
                         <thead>
@@ -23,14 +24,16 @@
                                 <th>Nome</th>
                                 <th>Quantidade</th>
                                 <th>Complementos</th>
+                                <th>Preço</th>
                                 <th></th>
                             </tr>
                         </thead>                            
                         <tbody>
-                            <tr ng-repeat="combo in combos">
+                            <tr ng-repeat="combo in combos track by $index">
                                 <td>{{combo.nome}}</td>
                                 <td>{{combo.quantidade}}</td>
-                                <td>{{combo.complementos}}</td>
+                                <td>{{getStringComplementos(combo.complementos)}}</td>
+                                <td>{{combo.quantidade * combo.preco}}</td>
                                 <td><a ng-click="excluirCombo($index)" class="waves-effect waves-light btn red">Excluir</a></td>
                             </tr>
                         </tbody>
@@ -38,13 +41,13 @@
 
                     <div class="row" style="margin-top:20px;">
                         <div class="input-field col s8">
-                            <select ng-model="combo.nome"  ng-change="setQntComplemento(combo.nome)">
+                            <select ng-model="combo"  ng-change="setQntComplemento(combo)">
                                 <option value="">Escolha o combo</option>
-                                <option ng-repeat="comboCadastrado in combosCadastrados" value="{{comboCadastrado.nome}}">{{comboCadastrado.nome}}</option>
+                                <option ng-repeat="comboCadastrado in combosCadastrados" value="{{comboCadastrado}}">{{comboCadastrado.nome}} - R$ {{comboCadastrado.preco}}</option>
                             </select>
                         </div>  
                         <div class="input-field col s4">
-                            <input placeholder="" id="quantidade" type="number" min="1" max="10" class="validate" ng-model="combo.quantidade">
+                            <input placeholder="" id="quantidade" type="number" min="1" max="10" class="validate" ng-model="qntCombo">
                             <label for="quantidade">Quantidade</label>
                         </div>   
                     </div>
@@ -58,13 +61,13 @@
                         <div class="input-field col s12">
                             <select ng-model="ComplementosAux[$index]">
                                 <option value="" disabled selected>Escolha o complemento</option>
-                                <option value="{{complemento.nome}}" ng-repeat="complemento in complementos">{{complemento.nome}}</option>
+                                <option value="{{complemento}}" ng-repeat="complemento in porcoesCadastradas">{{complemento.nome}}</option>
                             </select>
                             <label>Complemento {{$index + 1}}</label>
                         </div>
 					</div>	
                    
-                    <a class="waves-effect waves-light btn blue darken-4" ng-disabled="!combo.nome || !combo.quantidade" ng-click="adicionarCombo(combo)"><i class="material-icons left">add_circle</i>Adicionar Combo</a>
+                    <a class="waves-effect waves-light btn blue darken-4" ng-disabled="!combo || !qntCombo" ng-click="adicionarCombo(combo, qntCombo)"><i class="material-icons left">add_circle</i>Adicionar Combo</a>
                        
                 </div>
             </div>
@@ -78,13 +81,15 @@
                             <tr>
                                 <th>Nome</th>
                                 <th>Quantidade</th>
+                                <th>Preço</th>
                                 <th></th>
                             </tr>
                         </thead>                            
                         <tbody>
-                            <tr ng-repeat="porcao in porcoes">
+                            <tr ng-repeat="porcao in porcoes track by $index">
                                 <td>{{porcao.nome}}</td>
                                 <td>{{porcao.quantidade}}</td>
+                                <td>{{porcao.quantidade * porcao.preco}}</td>
                                 <td><a ng-click="excluirPorcao($index)" class="waves-effect waves-light btn red">Excluir</a></td>
                             </tr>
                         </tbody>
@@ -92,24 +97,25 @@
 
                     <div class="row" style="margin-top:20px;">
                         <div class="input-field col s8">
-                            <select ng-model="porcao.nome">
+                            <select ng-model="porcao">
                                 <option value="">Escolha a porção</option>
-                                <option ng-repeat="porcaoCadastrada in porcoesCadastradas" value="{{porcaoCadastrada.nome}}">{{porcaoCadastrada.nome}}</option>
+                                <option ng-repeat="porcaoCadastrada in porcoesCadastradas" value="{{porcaoCadastrada}}">{{porcaoCadastrada.nome}} - R$ {{porcaoCadastrada.preco}}</option>
                             </select>
                         </div>  
                         <div class="input-field col s4">
-                            <input id="quantidade" type="number" min="1" max="10" class="validate" ng-model="porcao.quantidade">
+                            <input id="quantidade" type="number" min="1" max="10" class="validate" ng-model="qntPorcao">
                             <label for="quantidade">Quantidade</label>
                         </div>   
                     </div>
 
-                    <a class="waves-effect waves-light btn blue darken-4" ng-disabled="!porcao.nome || !porcao.quantidade" ng-click="adicionarPorcao(porcao)"><i class="material-icons left">add_circle</i>Adicionar Porção</a>
+                    <a class="waves-effect waves-light btn blue darken-4" ng-disabled="!porcao || !qntPorcao" ng-click="adicionarPorcao(porcao, qntPorcao)"><i class="material-icons left">add_circle</i>Adicionar Porção</a>
                        
                 </div>
             </div>
 
 
             <!-- CARD BEBIDA -->
+            
             <div class="card grey lighten-2">
                 <div class="card-content">
                     <span class="card-title">BEBIDA</span>
@@ -118,13 +124,15 @@
                             <tr>
                                 <th>Nome</th>
                                 <th>Quantidade</th>
+                                <th>Preço</th>
                                 <th></th>
                             </tr>
                         </thead>                            
                         <tbody>
-                            <tr ng-repeat="bebida in bebidas">
+                            <tr ng-repeat="bebida in bebidas track by $index">
                                 <td>{{bebida.nome}}</td>
                                 <td>{{bebida.quantidade}}</td>
+                                <td>{{bebida.quantidade * bebida.preco}}</td>
                                 <td><a ng-click="excluirBebida($index)" class="waves-effect waves-light btn red">Excluir</a></td>
                             </tr>
                         </tbody>
@@ -132,18 +140,18 @@
 
                     <div class="row" style="margin-top:20px;">
                         <div class="input-field col s8">
-                            <select ng-model="bebida.nome">
+                            <select ng-model="bebida">
                                 <option value="">Escolha a bebida</option>
-                                <option ng-repeat="bebidaCadastrada in bebidasCadastradas" value="{{bebidaCadastrada.nome}}">{{bebidaCadastrada.nome}}</option>
+                                <option ng-repeat="bebidaCadastrada in bebidasCadastradas" value="{{bebidaCadastrada}}">{{bebidaCadastrada.nome}} - R$ {{bebidaCadastrada.preco}}</option>
                             </select>
                         </div>  
                         <div class="input-field col s4">
-                            <input id="quantidade" type="number" min="1" max="10" class="validate" ng-model="bebida.quantidade">
+                            <input id="quantidade" type="number" min="1" max="10" class="validate" ng-model="qntBebida">
                             <label for="quantidade">Quantidade</label>
                         </div>   
                     </div>
 
-                    <a class="waves-effect waves-light btn blue darken-4" ng-disabled="!bebida.nome || !bebida.quantidade" ng-click="adicionarBebida(bebida)"><i class="material-icons left">add_circle</i>Adicionar Bebida</a>
+                    <a class="waves-effect waves-light btn blue darken-4" ng-disabled="!bebida || !qntBebida" ng-click="adicionarBebida(bebida, qntBebida)"><i class="material-icons left">add_circle</i>Adicionar Bebida</a>
                        
                 </div>
             </div>
@@ -159,6 +167,9 @@
                                 <label for="textarea1">OBSERVAÇÕES</label>
                             </div>
                         </form>
+                    </div>
+                    <div class="row">
+                        <h3>R$ {{precoFinal}}</h3>
                     </div>  
                     <div class="row">
                         <a ng-disabled="porcoes.length == 0 &&  combos == 0" class="waves-effect waves-light btn light-green darken-3"><i class="material-icons left">check</i>Cadastrar Pedido</a>

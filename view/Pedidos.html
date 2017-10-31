@@ -1,57 +1,80 @@
-<script>
-    $( document ).ready(function(){
-        $('select').material_select();
-        $('#textarea1').trigger('autoresize');
-    })
-</script>
+<div class="container center-align">
 
-<div class="center-align">
+    <div class="card grey">
+        <div class="card-content">
 
-    <div class="row">
-    <div class="card grey col s4" ng-style="colunaStyle">
-        <div class="card-content" >
-            <span class="card-title">PENDENTE</span>
+            <!-- TITULO -->
+            <h3>PEDIDOS</h3>
 
-            <div class="card grey lighten-2">
-                <div class="card-content">
+                <!-- CARD PEDIDOS PENDENTES -->
+                <div class="card grey lighten-2">
+                    <div class="card-content">
+                        <span class="card-title">PENDENTES</span>
 
+                        <table class="striped centered bordered">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Local</th>
+                                    <th>Combos</th>
+                                    <th>Porções</th>
+                                    <th>Bebidas</th>
+                                    <th>Preço</th>  
+                                    <th></th>                                   
+                                </tr>
+                            </thead>                            
+                            <tbody>
+                                <tr ng-repeat="pedido in todosPedidos | filter: { status: 'pendente' }">
+                                    <td>{{pedido.nomeCliente}}</td>
+                                    <td>{{pedido.local}}</td>
+                                    <td>{{pedido.combos}}</td>
+                                    <td>{{pedido.porcoes}}</td>
+                                    <td>{{pedido.bebidas}}</td>
+                                    <td>{{pedido.preco}}</td>
+                                    <td><a class="waves-effect waves-light btn green" ng-click="confirmarPedido(pedido)">Confirmar</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
                 </div>
-            </div>
+
+                <!-- CARD PEDIDOS PENDENTES -->
+                <div class="card grey lighten-2">
+                    <div class="card-content">
+                        <span class="card-title">A FAZER</span>
+
+                        <table class="striped centered bordered">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Local</th>
+                                    <th>Combos</th>
+                                    <th>Porções</th>
+                                    <th>Bebidas</th>
+                                    <th>Preço</th>  
+                                    <th></th>                                   
+                                </tr>
+                            </thead>                            
+                            <tbody>
+                                <tr ng-repeat="pedido in todosPedidos | filter: { status: 'fazendo' }">
+                                    <td>{{pedido.nomeCliente}}</td>
+                                    <td>{{pedido.local}}</td>
+                                    <td>{{pedido.combos}}</td>
+                                    <td>{{pedido.porcoes}}</td>
+                                    <td>{{pedido.bebidas}}</td>
+                                    <td>{{pedido.preco}}</td>
+                                    <td><a class="waves-effect waves-light btn blue" ng-click="finalizarPedido(pedido)">Finalizar</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
 
 
 
         </div>
     </div>
-
-    <div class="card grey col s4" ng-style="colunaStyle">
-        <div class="card-content" >
-            <span class="card-title">PENDENTE</span>
-
-            <div class="card grey lighten-2">
-                <div class="card-content">
-
-                </div>
-            </div>
-
-
-
-        </div>
-    </div>
-
-    <div class="card grey col s4" ng-style="colunaStyle">
-        <div class="card-content" >
-            <span class="card-title">PENDENTE</span>
-
-            <div class="card grey lighten-2">
-                <div class="card-content">
-
-                </div>
-            </div>
-
-
-
-        </div>
-    </div>
-
-</div>
 </div>
