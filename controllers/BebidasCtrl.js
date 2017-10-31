@@ -1,11 +1,11 @@
 app.controller("BebidasCtrl",function($scope, $routeParams, $location){
 
      $scope.bebidas = [
-          {id:1, nome:"Bebida 1", preco:"5.50"},
-          {id:2, nome:"Bebida 2", preco:"10.00"},
-          {id:3, nome:"Bebida 3", preco:"2.00"},
-          {id:4, nome:"Bebida 4", preco:"4.00"},
-          {id:5, nome:"Bebida 5", preco:"7.00"}
+          {id:1, nome:"Bebida 1", quantidade: 5, preco:"5.50", exibir:false},
+          {id:2, nome:"Bebida 2",  quantidade: 5, preco:"10.00",  exibir:true},
+          {id:3, nome:"Bebida 3", quantidade: 5, preco:"2.00", exibir:true},
+          {id:4, nome:"Bebida 4",  quantidade: 5, preco:"4.00",  exibir:true},
+          {id:5, nome:"Bebida 5",  quantidade: 5, preco:"7.00",  exibir:true}
      ]
 
      if($routeParams.bebidaId){

@@ -1,31 +1,106 @@
 <div class="container center-align">
 
-     <div class="card grey lighten-1">
+     <div class="card grey lighten-3">
           <div class="card-content">
-
-               <h3>Itens do cardápio</h3>
+               <h4>Combos</h4>
+               <nav>
+                    <div class="nav-wrapper">
+                         <form>
+                              <div class="input-field  grey lighten-1">
+                                   <input id="search" type="search" ng-model="criterioDeBusca1">
+                                   <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                   <i class="material-icons">close</i>
+                              </div>
+                         </form>
+                    </div>
+               </nav>
                <table class="bordered menu">
                     <thead>
                          <tr>
                               <th>Desativar</th>
                               <th>Nome</th>
                               <th>Preço</th>
+                              <th>Quantidade</th>
                          </tr>
                     </thead>
                     <tbody>
 
-                         <tr ng-class="{desativado:item.desativado, ativado:!item.desativado}" ng-repeat="item in cardapio">
-                              <td><input type="checkbox" id="{{item.id}}" ng-model="item.desativado" ng-click="verificaEstado(item)"/><label for="{{item.id}}"></label></td>
-                              <td>{{item.nome}}</td>
-                              <td>{{item.preco}}</td>
+                         <tr ng-class="{desativado:combo.desativado, ativado:!combo.desativado}" ng-repeat="combo in combos | filter:{nome:criterioDeBusca1} | orderBy:'-desativado'">
+                              <td><input type="checkbox" id="{{combo.id}}" ng-model="combo.desativado" ng-click="verificaEstadoCombo(combo)"/><label for="{{combo.id}}"></label></td>
+                              <td>{{combo.nome}}</td>
+                              <td>{{combo.preco}}</td>
+                              <td>{{combo.quantidade}}</td>
                          </tr>
 
                     </tbody>
                </table>
 
-               <a class="waves-effect waves-light btn red" ng-click="salvaModificacoes()" ng-disabled="!isItemDesativado()">Salvar</a>
+               <h4>Porções</h4>
+               <nav>
+                    <div class="nav-wrapper">
+                         <form>
+                              <div class="input-field  grey lighten-1">
+                                   <input id="search" type="search" ng-model="criterioDeBusca2">
+                                   <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                   <i class="material-icons">close</i>
+                              </div>
+                         </form>
+                    </div>
+               </nav>
+               <table class="bordered menu">
+                    <thead>
+                         <tr>
+                              <th>Desativar</th>
+                              <th>Nome</th>
+                              <th>Preço</th>
+                              <th>Quantidade</th>
+                         </tr>
+                    </thead>
+                    <tbody>
 
+                         <tr ng-class="{desativado:porcao.desativado, ativado:!porcao.desativado}" ng-repeat="porcao in porcoes | filter:{nome:criterioDeBusca2}  | orderBy:'-desativado'">
+                              <td><input type="checkbox" id="{{porcao.id}}" ng-model="porcao.desativado" ng-click="verificaEstadoPorcao(porcao)"/><label for="{{porcao.id}}"></label></td>
+                              <td>{{porcao.nome}}</td>
+                              <td>{{porcao.preco}}</td>
+                              <td>{{porcao.quantidade}}</td>
+                         </tr>
 
+                    </tbody>
+               </table>
+
+               <h4>Bebidas</h4>
+               <nav>
+                    <div class="nav-wrapper">
+                         <form>
+                              <div class="input-field  grey lighten-1">
+                                   <input id="search" type="search" ng-model="criterioDeBusca3">
+                                   <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                   <i class="material-icons">close</i>
+                              </div>
+                         </form>
+                    </div>
+               </nav>
+               <table class="bordered menu">
+                    <thead>
+                         <tr>
+                              <th>Desativar</th>
+                              <th>Nome</th>
+                              <th>Preço</th>
+                              <th>Quantidade</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+
+                         <tr ng-class="{desativado:bebida.desativado, ativado:!bebida.desativado}" ng-repeat="bebida in bebidas | filter:{nome:criterioDeBusca3}  | orderBy:'-desativado'">
+                              <td><input type="checkbox" id="{{bebida.id}}" ng-model="bebida.desativado" ng-click="verificaEstadoBebida(bebida)"/><label for="{{bebida.id}}"></label></td>
+                              <td>{{bebida.nome}}</td>
+                              <td>{{bebida.preco}}</td>
+                              <td>{{bebida.quantidade}}</td>
+                         </tr>
+
+                    </tbody>
+               </table>
+               <a class="waves-effect waves-light btn lg-max" ng-click="salvaModificacoes()"  ng-disabled="!isItemDesativado()">Salvar</a>
           </div>
      </div>
 </div>
