@@ -11,27 +11,27 @@
                     <div class="card-content">
                         <span class="card-title">PENDENTES</span>
 
-                        <!-- porvisório -->
                         <table class="striped centered bordered">
                             <thead>
                                 <tr>
                                     <th>Cliente</th>
-                                    <th>Endereço</th>
+                                    <th>Local</th>
                                     <th>Combos</th>
                                     <th>Porções</th>
                                     <th>Bebidas</th>
-                                    <th>Preço</th>                                    
+                                    <th>Preço</th>  
+                                    <th></th>                                   
                                 </tr>
                             </thead>                            
                             <tbody>
-                                <tr>
-                                    <td>Vinicius</td>
-                                    <td>Rua H, 1087, Castelândia</td>
-                                    <td>Ventani - batata, batata, aipim, polenta</td>
-                                    <td>Batata</td>
-                                    <td>Coca Cola 2L</td>
-                                    <td>R$ 45.15</td>
-                                    <td><a class="waves-effect waves-light btn green">Confirmar</a></td>
+                                <tr ng-repeat="pedido in todosPedidos | filter: { status: 'pendente' }">
+                                    <td>{{pedido.nomeCliente}}</td>
+                                    <td>{{pedido.local}}</td>
+                                    <td>{{pedido.combos}}</td>
+                                    <td>{{pedido.porcoes}}</td>
+                                    <td>{{pedido.bebidas}}</td>
+                                    <td>{{pedido.preco}}</td>
+                                    <td><a class="waves-effect waves-light btn green" ng-click="confirmarPedido(pedido)">Confirmar</a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -44,30 +44,30 @@
                     <div class="card-content">
                         <span class="card-title">A FAZER</span>
 
-                        <!-- porvisório -->
                         <table class="striped centered bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Cliente</th>
-                                        <th>Endereço</th>
-                                        <th>Combos</th>
-                                        <th>Porções</th>
-                                        <th>Bebidas</th>
-                                        <th>Preço</th>                                    
-                                    </tr>
-                                </thead>                            
-                                <tbody>
-                                    <tr>
-                                        <td>Vinicius</td>
-                                        <td>Rua H, 1087, Castelândia</td>
-                                        <td>Ventani - batata, batata, aipim, polenta_______________________________________________</td>
-                                        <td>Batata</td>
-                                        <td>Coca Cola 2L</td>
-                                        <td>R$ 45.15</td>
-                                        <td><a class="waves-effect waves-light btn blue">Finalizar</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Local</th>
+                                    <th>Combos</th>
+                                    <th>Porções</th>
+                                    <th>Bebidas</th>
+                                    <th>Preço</th>  
+                                    <th></th>                                   
+                                </tr>
+                            </thead>                            
+                            <tbody>
+                                <tr ng-repeat="pedido in todosPedidos | filter: { status: 'fazendo' }">
+                                    <td>{{pedido.nomeCliente}}</td>
+                                    <td>{{pedido.local}}</td>
+                                    <td>{{pedido.combos}}</td>
+                                    <td>{{pedido.porcoes}}</td>
+                                    <td>{{pedido.bebidas}}</td>
+                                    <td>{{pedido.preco}}</td>
+                                    <td><a class="waves-effect waves-light btn blue" ng-click="finalizarPedido(pedido)">Finalizar</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                     </div>
                 </div>
