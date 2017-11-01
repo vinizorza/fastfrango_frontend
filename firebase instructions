@@ -1,0 +1,15 @@
+Com o Node.js instalado, use o comando:  npm install -g firebase-tools  .
+Esse comando instalrá as funcionalidade do firebase.
+Escolha um diretorio onde vc deseja manter(ou tem o seu projeto), e utilize o comando: firebase login.
+  No c9.io pode dar erro de autenticação de usuário, então use: firebase login --no-localhost.
+    Aparecerá um link no pront que deve ser colado no browser para a autenticação. O codigo que aparecerá devera ser colocado no pront.
+Para iniciar utilize: firebase init.
+  O firebase so tem acesso ao conteúdo existem na pasta publica.
+  
+Agora você está logado, projeto escolhido e pode utilizar o firebase.
+
+Firebase deploy : pega todo o conteúdo da pasta publica e faz upload para o hosting no firebase da sua conta logada.
+Firebase open->hosting deployed : irá abrir no navegador o index.html da pasta public ou você pode entrar no firebase->hosting e clicar no link.
+
+
+Importate: Para utilizar as outras funcionalidades do firebase é necessário um script adicional que pode ser conseguido no site do firebase, selecionando o projeto e cliando no botao vermelho redendo
