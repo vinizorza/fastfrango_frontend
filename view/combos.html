@@ -2,7 +2,7 @@
 
      <div class="card grey lighten-3">
           <div class="card-content">
-               <h3>Bebidas</h3>
+               <h3>Combos</h3>
                <nav>
                     <div class="nav-wrapper">
                          <form>
@@ -19,23 +19,25 @@
                          <tr>
                               <th>Nome</th>
                               <th>Preço (R$)</th>
+                              <th>Quantidade de porções</th>
                               <th>Ações</th>
                          </tr>
                     </thead>
                     <tbody>
-                         <tr ng-repeat="bebida in bebidas | filter:{nome:criterioDeBusca}">
-                              <td>{{bebida.nome}}</td>
-                              <td>{{bebida.preco}}</td>
+                         <tr ng-repeat="combo in combos | filter:{nome:criterioDeBusca}">
+                              <td>{{combo.nome}}</td>
+                              <td>{{combo.preco}}</td>
+                              <td>{{combo.qtd_porcoes}}</td>
                               <td>
-                                   <a class="waves-effect waves-light btn" href="#!/bebidas/editar/{{bebida.id}}">Editar</a>
-                                   <a class="waves-effect waves-light btn red" ng-click="deletarBebida(bebida)">Excluir</a>
+                                   <a class="waves-effect waves-light btn" href="#!/combos/editar/{{combo.id}}">Editar</a>
+                                   <a class="waves-effect waves-light btn red" ng-click="deletarCombo(combo)">Excluir</a>
                               </td>
                          </tr>
 
                     </tbody>
                </table>
 
-               <a class="waves-effect waves-light btn lg-max" href="#!/bebidas/nova" >Adicionar nova bebida</a>
+               <a class="waves-effect waves-light btn lg-max" href="#!/combos/novo" >Adicionar novo combo</a>
 
 
           </div>

@@ -1,28 +1,18 @@
 <div class="container center-align">
      <div class="card grey lighten-3">
           <div class="card-content">
-               <h4>Cadastrar Bebida</h4>
+               <h4>Bebida</h4>
                <form class="col s12" name="cadastroBebida">
                     <div class="input-field col s6">
                          <input  id="bebida" name="nome" type="text" class="validate" ng-model="bebida.nome" ng-required="true">
-                         <label for="bebida">Nome da Bebida</label>
+                         <label class="active" for="bebida">Nome da Bebida</label>
                          <div class="card-panel red lighten-1" ng-show="cadastroBebida.nome.$error.required && cadastroBebida.nome.$dirty">
                               Por favor, preencha o nome da bebida!
                          </div>
                     </div>
                     <div class="input-field col s6">
-                         <input  id="quantidadeBebida" name="quantidade" type="text" class="validate" ng-model="bebida.quantidade" ng-required="true" ng-pattern="/^\d+$/">
-                         <label for="quantidadeBebida">Quantidade em Estoque</label>
-                         <div class="card-panel red lighten-1" ng-show="cadastroBebida.quantidade.$error.required && cadastroBebida.quantidade.$dirty">
-                              Por favor, preencha a quantidade de bebida em estoque!
-                         </div>
-                         <div class="card-panel red lighten-1" ng-show="cadastroBebida.quantidade.$error.pattern">
-                              O campo quantidade deve conter apenas números!
-                         </div>
-                    </div>
-                    <div class="input-field col s6">
                          <input  id="precoBebida" name="preco" type="text" class="validate" ng-model="bebida.preco" ng-required="true" ng-pattern="/^\d+.\d+$/">
-                         <label for="precoBebida">Preço da Bebida (R$)</label>
+                         <label class="active" for="precoBebida">Preço da Bebida (R$)</label>
                          <div class="card-panel red lighten-1" ng-show="cadastroBebida.preco.$error.required && cadastroBebida.preco.$dirty">
                               Por favor, preencha o preço da bebida!
                          </div>
@@ -30,14 +20,24 @@
                               O campo preço deve ter o formato 0.0!
                          </div>
                     </div>
-               </form>
-
-               <form action="#">
+                    <div class="input-field col s6">
+                         <div class="file-field input-field">
+                             <div class="btn">
+                                <span>Imagem</span>
+                                <input type="file">
+                             </div>
+                             <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                             </div>
+                         </div>
+                    </div>
                     <p>
-                         <input type="checkbox" class="filled-in" id="filled-in-box" ng-model="bebida.exibir" ng-required="true"/>
+                         <input type="checkbox" class="filled-in" id="filled-in-box" ng-model="bebida.exibir"/>
                          <label for="filled-in-box">Exibir no cardápio(marque para exibir)</label>
                     </p>
                </form>
+
+
 
                <div class="row">
                     <a class="waves-effect waves-light btn lg-max" ng-disabled="cadastroBebida.$invalid" ng-click="cadastraBebida(bebida)">Cadastrar Bebida</a>

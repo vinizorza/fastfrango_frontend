@@ -1,0 +1,50 @@
+     <div class="container center-align">
+          <div class="card grey lighten-3">
+               <div class="card-content">
+                    <h4>Porção</h4>
+                    <form class="col s12" name="cadastroPorcao">
+                         <div class="input-field col s6">
+                              <input class="validate" name="nome" id="nome_porcao" type="text" ng-model="porcao.nome"  ng-required="true">
+                              <label class="active" for="nome_porcao">Nome da porção</label>
+                              <div class="card-panel red lighten-1" ng-show="cadastroPorcao.nome.$error.required && cadastroPorcao.nome.$dirty">
+                                   Por favor, preencha o nome da porcão!
+                              </div>
+                         </div>
+                         <div class="input-field col s6">
+                              <input  id="preco_porcao" name="preco" type="text" class="validate" ng-model="porcao.preco" ng-required="true" ng-pattern="/^\d+.\d+$/">
+                              <label class="active" for="preco_porcao">Preço da porção (R$)</label>
+                              <div class="card-panel red lighten-1" ng-show="cadastroPorcao.preco.$error.required && cadastroPorcao.preco.$dirty">
+                                   Por favor, preencha o preço da porcão!
+                              </div>
+                              <div class="card-panel red lighten-1" ng-show="cadastroPorcao.preco.$error.pattern">
+                                   O campo preço deve ter o formato 0.0!
+                              </div>
+                         </div>
+                         <div class="input-field col s6">
+                              <input  id="descricao_porcao" name="descricao" type="text" class="validate" ng-model="porcao.descricao">
+                              <label class="active" for="descricao_porcao">Descrição</label>
+                         </div>
+                         <div class="input-field col s6">
+                              <div class="file-field input-field">
+                                  <div class="btn">
+                                     <span>Imagem</span>
+                                     <input type="file">
+                                  </div>
+                                  <div class="file-path-wrapper">
+                                     <input class="file-path validate" type="text">
+                                  </div>
+                              </div>
+                         </div>
+                         <p>
+                              <input type="checkbox" class="filled-in" id="filled-in-box" ng-model="porcao.exibir"/>
+                              <label class="active" for="filled-in-box">Exibir no cardápio(marque para exibir)</label>
+                         </p>
+                    </form>
+
+                    <div class="row">
+                         <a class="waves-effect waves-light btn lg-max" ng-disabled="cadastroPorcao.$invalid" ng-click="cadastraPorcao(porcao)">Cadastrar porção</a>
+                         <a class="waves-effect waves-light btn lg-max" href="#!/porcoes">Voltar</a>
+                    </div>
+               </div>
+          </div>
+     </div>

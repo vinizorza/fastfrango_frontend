@@ -12,19 +12,34 @@ app.config(function($routeProvider){
         templateUrl:"view/NovoPedido.html"
     });
 
-    $routeProvider.when("/cadastrarcombo",{
-        controller:"CadastraComboCtrl",
-        templateUrl:"view/CadastraCombo.html"
+    $routeProvider.when("/combos",{
+        controller:"CombosCtrl",
+        templateUrl:"view/combos.html"
     });
 
-    $routeProvider.when("/alterarproduto",{
-        controller:"AltProdCtrl",
-        templateUrl:"view/AlteraProdutos.html"
+    $routeProvider.when("/combos/novo",{
+       controller:"CombosCtrl",
+       templateUrl:"view/Combo.html"
     });
 
-    $routeProvider.when("/cadastrarporcao",{
-        controller:"CadPorcaoCtrl",
-        templateUrl:"view/CadastraPorcao.html"
+    $routeProvider.when("/combos/editar/:comboId",{
+       controller:"CombosCtrl",
+       templateUrl:"view/Combo.html"
+    });
+
+    $routeProvider.when("/porcoes",{
+        controller:"PorcaoCtrl",
+        templateUrl:"view/porcoes.html"
+    });
+
+    $routeProvider.when("/porcoes/nova",{
+       controller:"PorcaoCtrl",
+       templateUrl:"view/Porcao.html"
+    });
+
+    $routeProvider.when("/porcoes/editar/:porcaoId",{
+       controller:"PorcaoCtrl",
+       templateUrl:"view/Porcao.html"
     });
 
     $routeProvider.when("/pedidos",{
@@ -47,15 +62,6 @@ app.config(function($routeProvider){
        templateUrl:"view/Bebida.html"
     });
 
-    $routeProvider.when("/estoque",{
-        controller:"EstoqueCtrl",
-        templateUrl:"view/Estoque.html"
-    });
-
-    $routeProvider.when("/relatorio",{
-        controller:"RelatorioCtrl",
-        templateUrl:"view/Relatorio.html"
-    });
 
     $routeProvider.when("/cardapio",{
         controller:"CardapioCtrl",
