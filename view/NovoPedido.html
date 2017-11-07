@@ -33,7 +33,6 @@
                     <!-- CARD COMBO -->
                     <div class="card grey lighten-2">
                         <div class="card-content">
-        
                             <div class="row" style="margin-top:20px;">
                                 <div class="input-field col s8">
                                     <select ng-model="combo"  ng-change="setQntComplemento(combo)">
@@ -128,7 +127,7 @@
 
                         <!-- TABELA COMBO -->                        
                         <span class="card-title">PEDIDOS</span>
-                        <table class="striped centered bordered" ng-show="combos.length > 0">
+                        <table class="striped centered bordered" ng-show="combos.length > 0 || porcoes.length > 0 || bebidas.length > 0">
                             
                             <thead>
                                 <tr>
@@ -143,7 +142,7 @@
                                 <tr ng-repeat="combo in combos track by $index">
                                     <td>{{combo.nome}}</td>
                                     <td>{{combo.quantidade}}</td>
-                                    <td>{{complementos}}</td>
+                                    <td>{{combo.complementosFormatado}}</td>
                                     <td>{{combo.quantidade * combo.preco}}</td>
                                     <td><a ng-click="excluirCombo($index)" class="waves-effect waves-light btn red">Excluir</a></td>
                                 </tr>
@@ -163,8 +162,6 @@
                                 </tr>
                             </tbody>
                         </table>
-
-                        
 
                         <form class="col s12">
                             <div class="input-field col s12">
