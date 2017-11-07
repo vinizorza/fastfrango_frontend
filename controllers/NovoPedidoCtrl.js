@@ -9,6 +9,7 @@ app.controller("NovoPedidoCtrl",function($scope){
     // Variaveis Auxiliares
     $scope.qntComplementos = [];
     $scope.ComplementosAux = [];
+    $scope.complementos = "";
 
     $scope.setQntComplemento = function(combo){    
         combo = JSON.parse(combo);   
@@ -19,7 +20,8 @@ app.controller("NovoPedidoCtrl",function($scope){
 		return new Array(num);
     }	
 
-    $scope.getStringComplementos = function(complementos){
+    getStringComplementos = function(complementos){
+        console.log(complementos);
         var stringComplementos = "";
         for(var i = 0; i < complementos.length; i++){
             if(i == (complementos.length - 1)){
@@ -51,15 +53,17 @@ app.controller("NovoPedidoCtrl",function($scope){
         {nome:"Cerveja Brahma Lata", preco: 6.5},
     ];
 
-    $scope.adicionarCombo = function(combo, qntCombo){
+    $scope.adicionarCombo = function(combo, qntCombo){        
         combo = JSON.parse(combo);
         combo.quantidade = qntCombo;
         combo.complementos = $scope.ComplementosAux;
+        $scope.complementos = getStringComplementos(combo.complementos);
         $scope.combos.push(angular.copy(combo));
         $scope.precoFinal += combo.quantidade * combo.preco;
-        // delete $scope.combo;
-        // delete $scope.qntCombo;
+        delete $scope.combo;
+        delete $scope.qntCombo;
         $scope.ComplementosAux = [];
+        $scope.qntComplementos = [];
     };
 
     $scope.adicionarPorcao = function(porcao, qntPorcao){
