@@ -27,14 +27,14 @@ app.config(function($routeProvider){
        templateUrl:"view/Combo.html"
     });
 
-    $routeProvider.when("/porcoes",{
-        controller:"PorcaoCtrl",
-        templateUrl:"view/porcoes.html"
+    $routeProvider.when("/produtos",{
+        controller:"ProdutoCtrl",
+        templateUrl:"view/produtos.html"
     });
 
-    $routeProvider.when("/porcoes/nova",{
-       controller:"PorcaoCtrl",
-       templateUrl:"view/Porcao.html"
+    $routeProvider.when("/produtos/novo",{
+       controller:"ProdutoCtrl",
+       templateUrl:"view/produto.html"
     });
 
     $routeProvider.when("/porcoes/editar/:porcaoId",{
@@ -46,22 +46,6 @@ app.config(function($routeProvider){
         controller:"PedidosCtrl",
         templateUrl:"view/Pedidos.html"
     });
-
-    $routeProvider.when("/bebidas",{
-        controller:"BebidasCtrl",
-        templateUrl:"view/bebidas.html"
-    });
-
-    $routeProvider.when("/bebidas/nova",{
-       controller:"BebidasCtrl",
-       templateUrl:"view/Bebida.html"
-    });
-
-    $routeProvider.when("/bebidas/editar/:bebidaId",{
-       controller:"BebidasCtrl",
-       templateUrl:"view/Bebida.html"
-    });
-
 
     $routeProvider.when("/cardapio",{
         controller:"CardapioCtrl",

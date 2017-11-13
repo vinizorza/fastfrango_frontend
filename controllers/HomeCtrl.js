@@ -12,7 +12,7 @@ app.controller("HomeCtrl",function($scope){
         {nome: "Pedidos", src: host + "/#!/pedidos"},
         {nome: "Novo Pedido", src: host + "/#!/novopedido"},
         {nome: "Combos", src: host + "/#!/combos"},
-        {nome: "Porções", src: host + "/#!/porcoes"},
+        {nome: "Produtos", src: host + "/#!/produtos"},
     ];
 
 });

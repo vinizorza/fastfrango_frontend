@@ -11,6 +11,14 @@
                          </div>
                     </div>
                     <div class="input-field col s6">
+                         <select  id="porcao_principal" name="porcao_principal" class="validate" ng-model="combo.porcao_principal" ng-required="true" ng-options="produto.nome for produto in produtos | filter:{tipo:{id: 1, nome:'Porção'}, principal:true}">
+                              <option value=""  selected>Selecione a porção principal</option>
+                         </select>
+                         <div class="card-panel red lighten-1" ng-show="cadastroCombo.porcao_principal.porcao_principal.$error.required && cadastroCombo.nome.$dirty">
+                              Por favor, preencha qual a porção principal deste combo!
+                         </div>
+                    </div>
+                    <div class="input-field col s6">
                          <input class="validate" name="quantidade_porcoes" id="qtd_porcoes" ng-model="combo.qtd_porcoes"  ng-required="true" ng-pattern="/^\d+$/" />
                          <label class="active" for="qtd_porcoes">Quantidade de porções</label>
                          <div class="card-panel red lighten-1" ng-show="cadastroCombo.quantidade_porcoes.$error.required && cadastroCombo.quantidade_porcoes.$dirty">
@@ -60,3 +68,9 @@
           </div>
      </div>
 </div>
+
+<script>
+    $( document ).ready(function(){
+        $('select').material_select();
+    })
+</script>

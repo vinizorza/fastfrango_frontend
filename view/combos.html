@@ -19,7 +19,8 @@
                          <tr>
                               <th>Nome</th>
                               <th>Preço (R$)</th>
-                              <th>Quantidade de porções</th>
+                              <th>Porção principal</th>
+                              <th>Quantidade de complementos</th>
                               <th>Ações</th>
                          </tr>
                     </thead>
@@ -27,7 +28,8 @@
                          <tr ng-repeat="combo in combos | filter:{nome:criterioDeBusca}">
                               <td>{{combo.nome}}</td>
                               <td>{{combo.preco}}</td>
-                              <td>{{combo.qtd_porcoes}}</td>
+                              <td>{{combo.porcao_principal.nome}}</td>
+                              <td>{{combo.qtd_complementos}}</td>
                               <td>
                                    <a class="waves-effect waves-light btn" href="#!/combos/editar/{{combo.id}}">Editar</a>
                                    <a class="waves-effect waves-light btn red" ng-click="deletarCombo(combo)">Excluir</a>
