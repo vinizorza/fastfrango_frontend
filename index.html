@@ -4,7 +4,45 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="css/app.css">
       <link rel="stylesheet" href="lib/materialize/materialize.css">
-
+      
+      
+      <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyC9JsXAxotdjWFvFx_tM4U5xXQspDz0Ts4",
+          authDomain: "teste-fd75a.firebaseapp.com",
+          databaseURL: "https://teste-fd75a.firebaseio.com",
+          projectId: "teste-fd75a",
+          storageBucket: "teste-fd75a.appspot.com",
+          messagingSenderId: "565922813579"
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+        /*
+        //criação de usuário padrão//
+        caminho=database.ref('usuarios/0000').set({
+          nome:'maria',
+          comprasID:01 ,
+          endereco:'rua joao'
+        });
+        //se o usuário possuir contato é adicionado//
+        caminho=database.ref('usuarios/0000/contato1').set({
+          tipo:'telefone',
+          valor:'98888-8888'
+        });
+        caminho=database.ref('usuarios/0000/contato2').set({
+          tipo:'telefone',
+          valor:'98888-8889'
+        });*/
+        
+        
+      </script>
+      <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-database.js"></script>
+      
+      
       <script type="text/javascript" src="lib/jquery/jquery-3.2.1.js"></script>
       <script src="lib/materialize/materialize.js"></script>
 
@@ -17,18 +55,15 @@
       <!-- Controllers -->
       <script src="controllers/HomeCtrl.js"></script>
       <script src="controllers/NovoPedidoCtrl.js"></script>
-      <script src="controllers/CombosCtrl.js"></script>
-      <script src="controllers/PorcaoCtrl.js"></script>
+      <script src="controllers/CadastraComboCtrl.js"></script>
+      <script src="controllers/CadPorcaoCtrl.js"></script>
       <script src="controllers/CardapioCtrl.js"></script>
       <script src="controllers/PedidosCtrl.js"></script>
       <script src="controllers/BebidasCtrl.js"></script>
       <script src="controllers/AltProdCtrl.js"></script>
       <script src="controllers/EstoqueCtrl.js"></script>
       <script src="controllers/RelatorioCtrl.js"></script>
-      <script src="controllers/ProdutoCtrl.js"></script>
 
-      <!-- Directives-->
-      <script src="directives/imageInput.js"></script>
 
       <meta charset="utf8"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
