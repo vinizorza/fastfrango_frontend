@@ -1,0 +1,16 @@
+tem que estar no index.html, de preferencia no head e antes dos outros scripts.
+
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyC9JsXAxotdjWFvFx_tM4U5xXQspDz0Ts4",
+          authDomain: "teste-fd75a.firebaseapp.com",
+          databaseURL: "https://teste-fd75a.firebaseio.com",
+          projectId: "teste-fd75a",
+          storageBucket: "teste-fd75a.appspot.com",
+          messagingSenderId: "565922813579"
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+</script>        
