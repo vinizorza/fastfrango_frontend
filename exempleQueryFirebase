@@ -1,0 +1,12 @@
+Utilize esse trecho de código, em cada controller.
+
+
+
+
+Varivel1='usuarios/0000'
+
+database.ref(Variabel1).once('value').then(function(snapshot){
+        $scope.$apply(function(){
+            $scope.testando = snapshot.val();
+        })
+    });
