@@ -8,7 +8,7 @@ app.controller("HomeCtrl",function($scope){
 
     $scope.opcoes = [
         {nome: "Cardápio", src: host + "/#!/cardapio"},
-        {nome: "Bebidas", src: host + "/#!/bebidas"},
+        //{nome: "Bebidas", src: host + "/#!/bebidas"},
         {nome: "Pedidos", src: host + "/#!/pedidos"},
         {nome: "Novo Pedido", src: host + "/#!/novopedido"},
         {nome: "Combos", src: host + "/#!/combos"},
