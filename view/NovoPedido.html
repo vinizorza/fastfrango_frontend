@@ -37,7 +37,7 @@
                                 <div class="input-field col s8">
                                     <select ng-model="combo"  ng-change="setQntComplemento(combo)">
                                         <option value="">Escolha o combo</option>
-                                        <option ng-repeat="comboCadastrado in combosCadastrados" value="{{comboCadastrado}}">{{comboCadastrado.nome}} - R$ {{comboCadastrado.preco}}</option>
+                                        <option ng-repeat="comboCadastrado in produtosCadastrados | filter:'combo'" value="{{comboCadastrado}}">{{comboCadastrado.nome}} - R$ {{comboCadastrado.preco}}</option>
                                     </select>
                                 </div>  
                                 <div class="input-field col s4">
@@ -55,7 +55,7 @@
                                 <div class="input-field col s12">
                                     <select ng-model="ComplementosAux[$index]">
                                         <option value="" disabled selected>Escolha o complemento</option>
-                                        <option value="{{complemento}}" ng-repeat="complemento in porcoesCadastradas">{{complemento.nome}}</option>
+                                        <option value="{{complemento}}" ng-repeat="complemento in produtosCadastrados | filter:'porcao'">{{complemento.nome}}</option>
                                     </select>
                                     <label>Complemento {{$index + 1}}</label>
                                 </div>
@@ -77,7 +77,7 @@
                                 <div class="input-field col s8">
                                     <select ng-model="porcao">
                                         <option value="">Escolha a porção</option>
-                                        <option ng-repeat="porcaoCadastrada in porcoesCadastradas" value="{{porcaoCadastrada}}">{{porcaoCadastrada.nome}} - R$ {{porcaoCadastrada.preco}}</option>
+                                        <option ng-repeat="porcaoCadastrada in produtosCadastrados | filter:'porcao'" value="{{porcaoCadastrada}}">{{porcaoCadastrada.nome}} - R$ {{porcaoCadastrada.preco}}</option>
                                     </select>
                                 </div>  
                                 <div class="input-field col s4">
@@ -102,7 +102,7 @@
                                 <div class="input-field col s8">
                                     <select ng-model="bebida">
                                         <option value="">Escolha a bebida</option>
-                                        <option ng-repeat="bebidaCadastrada in bebidasCadastradas" value="{{bebidaCadastrada}}">{{bebidaCadastrada.nome}} - R$ {{bebidaCadastrada.preco}}</option>
+                                        <option ng-repeat="bebidaCadastrada in produtosCadastrados | filter:'bebida'" value="{{bebidaCadastrada}}">{{bebidaCadastrada.nome}} - R$ {{bebidaCadastrada.preco}}</option>
                                     </select>
                                 </div>  
                                 <div class="input-field col s4">
