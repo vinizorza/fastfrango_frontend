@@ -11,8 +11,8 @@ app.controller("HomeCtrl",function($scope){
         {nome: "Bebidas", src: host + "/#!/bebidas"},
         {nome: "Pedidos", src: host + "/#!/pedidos"},
         {nome: "Novo Pedido", src: host + "/#!/novopedido"},
-        {nome: "Combos", src: host + "/#!/cadastrarcombo"},
-        {nome: "Porções", src: host + "/#!/cadastrarporcao"},
+        {nome: "Combos", src: host + "/#!/combos"},
+        {nome: "Produtos", src: host + "/#!/produtos"},
     ];
 
 });

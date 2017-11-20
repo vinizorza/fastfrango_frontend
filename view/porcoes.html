@@ -2,7 +2,7 @@
 
      <div class="card grey lighten-3">
           <div class="card-content">
-               <h3>Bebidas</h3>
+               <h3>Porções</h3>
                <nav>
                     <div class="nav-wrapper">
                          <form>
@@ -23,19 +23,19 @@
                          </tr>
                     </thead>
                     <tbody>
-                         <tr ng-repeat="bebida in bebidas | filter:{nome:criterioDeBusca}">
-                              <td>{{bebida.nome}}</td>
-                              <td>{{bebida.preco}}</td>
+                         <tr ng-repeat="porcao in porcoes | filter:{nome:criterioDeBusca}">
+                              <td>{{porcao.nome}}</td>
+                              <td>{{porcao.preco}}</td>
                               <td>
-                                   <a class="waves-effect waves-light btn" href="#!/bebidas/editar/{{bebida.id}}">Editar</a>
-                                   <a class="waves-effect waves-light btn red" ng-click="deletarBebida(bebida)">Excluir</a>
+                                   <a class="waves-effect waves-light btn" href="#!/porcoes/editar/{{porcao.id}}">Editar</a>
+                                   <a class="waves-effect waves-light btn red" ng-click="deletarPorcao(porcao)">Excluir</a>
                               </td>
                          </tr>
 
                     </tbody>
                </table>
 
-               <a class="waves-effect waves-light btn lg-max" href="#!/bebidas/nova" >Adicionar nova bebida</a>
+               <a class="waves-effect waves-light btn lg-max" href="#!/porcoes/nova" >Adicionar nova porção</a>
 
 
           </div>

@@ -3,6 +3,7 @@
      <div class="card grey lighten-3">
           <div class="card-content">
                <h4>Combos</h4>
+               {{combos  }}
                <nav>
                     <div class="nav-wrapper">
                          <form>
@@ -20,6 +21,7 @@
                               <th>Desativar</th>
                               <th>Nome</th>
                               <th>Preço</th>
+                              <th>Quantidade de porções</th>
                               <th>Quantidade</th>
                          </tr>
                     </thead>
@@ -29,6 +31,7 @@
                               <td><input type="checkbox" id="{{combo.id}}" ng-model="combo.desativado" ng-click="verificaEstadoCombo(combo)"/><label for="{{combo.id}}"></label></td>
                               <td>{{combo.nome}}</td>
                               <td>{{combo.preco}}</td>
+                              <td>{{combo.qtd_porcoes}}</td>
                               <td>{{combo.quantidade}}</td>
                          </tr>
 

@@ -1,0 +1,76 @@
+<div class="container center-align">
+     <div class="card grey lighten-3">
+          <div class="card-content">
+               <h4>Produto</h4>
+               <div class="row">
+                    <form class="col s12" name="cadastroProduto">
+                         <div class="input-field col s12">
+                              <input class="validate" name="nome" id="nome_produto" type="text" ng-model="produto.nome"  ng-required="true">
+                              <label class="active" for="nome_produto">Nome do produto</label>
+                              <div class="card-panel red lighten-1" ng-show="cadastroProduto.nome.$error.required && cadastroProduto.nome.$dirty">
+                                   Por favor, preencha o nome do produto!
+                              </div>
+                         </div>
+                         <div class="col s8">
+                              <select  id="tipo_produto" name="tipo" class="validate" ng-model="produto.tipo" ng-required="true" ng-options="tipo.nome for tipo in tipos" ng-change="isPrincipal(produto)">
+                                   <option value="" disabled selected>Selecione um tipo de produto</option>
+                              </select>
+                         </div>
+                         <div class="col s4 principal" ng-if="produto.tipo.nome == 'Porção'">
+                              <p>
+                                   <input type="checkbox" class="filled-in" id="principal" ng-model="produto.principal"/>
+                                   <label class="" for="principal">Porção principal</label>
+                              </p>
+
+                         </div>
+                         <div class="input-field col s12">
+                              <input  id="preco_produto" name="preco" type="text" class="validate" ng-model="produto.preco" ng-required="true" ng-pattern="/^\d+.\d+$/">
+                              <label class="active" for="preco_produto">Preço do produto (R$)</label>
+                              <div class="card-panel red lighten-1" ng-show="cadastroProduto.preco.$error.required && cadastroProduto.preco.$dirty">
+                                   Por favor, preencha o preço do produto!
+                              </div>
+                              <div class="card-panel red lighten-1" ng-show="cadastroProduto.preco.$error.pattern">
+                                   O campo preço deve ter o formato 0.0!
+                              </div>
+                         </div>
+
+                         <div class="input-field col s12">
+                              <textarea  id="textarea2" class="materialize-textarea"  ng-model="produto.descricao"></textarea>
+                              <label class="active" for="textarea2">Descrição</label>
+                         </div>
+                         <div class="input-field col s12">
+                              <div class="file-field input-field">
+                                  <div class="btn">
+                                     <span>Imagem</span>
+                                     <input type="file" fileread="produto.imagem" >
+                                  </div>
+                                  <div class="file-path-wrapper">
+                                     <input class="file-path validate" type="text">
+                                  </div>
+                              </div>
+                         </div>
+
+                         <div class="col s12">
+                              <p>
+                                   <input type="checkbox" class="filled-in" id="exibir" ng-model="produto.exibir"/>
+                                   <label class="" for="exibir">Exibir no cardápio(marque para exibir)</label>
+                              </p>
+                         </div>
+
+                    </form>
+               </div>
+
+               <div class="row">
+                    <a class="waves-effect waves-light btn lg-max" ng-disabled="cadastroProduto.$invalid" ng-click="cadastraProduto(produto)">Cadastrar produto</a>
+                    <a class="waves-effect waves-light btn lg-max" href="#!/produtos">Voltar</a>
+               </div>
+          </div>
+     </div>
+</div>
+
+<script>
+    $( document ).ready(function(){
+        $('select').material_select();
+        $('#textarea2').trigger('autoresize');
+    })
+</script>

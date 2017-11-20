@@ -1,0 +1,76 @@
+<div class="container center-align">
+     <div class="card grey lighten-3">
+          <div class="card-content">
+               <h4>Combo</h4>
+               <form class="col s12" name="cadastroCombo">
+                    <div class="input-field col s6">
+                         <input class="validate" name="nome" id="nome_combo" type="text" ng-model="combo.nome"  ng-required="true">
+                         <label class="active" for="nome_combo">Nome do combo</label>
+                         <div class="card-panel red lighten-1" ng-show="cadastroCombo.nome.$error.required && cadastroCombo.nome.$dirty">
+                              Por favor, preencha o nome do combo!
+                         </div>
+                    </div>
+                    <div class="input-field col s6">
+                         <select  id="porcao_principal" name="porcao_principal" class="validate" ng-model="combo.porcao_principal" ng-required="true" ng-options="produto.nome for produto in produtos | filter:{tipo:{id: 1, nome:'Porção'}, principal:true}">
+                              <option value=""  selected>Selecione a porção principal</option>
+                         </select>
+                         <div class="card-panel red lighten-1" ng-show="cadastroCombo.porcao_principal.porcao_principal.$error.required && cadastroCombo.nome.$dirty">
+                              Por favor, preencha qual a porção principal deste combo!
+                         </div>
+                    </div>
+                    <div class="input-field col s6">
+                         <input class="validate" name="quantidade_porcoes" id="qtd_porcoes" ng-model="combo.qtd_porcoes"  ng-required="true" ng-pattern="/^\d+$/" />
+                         <label class="active" for="qtd_porcoes">Quantidade de porções</label>
+                         <div class="card-panel red lighten-1" ng-show="cadastroCombo.quantidade_porcoes.$error.required && cadastroCombo.quantidade_porcoes.$dirty">
+                              Por favor, preencha a quantidade de porções do combo!
+                         </div>
+                         <div class="card-panel red lighten-1" ng-show="cadastroCombo.quantidade_porcoes.$error.pattern">
+                              O campo quantidade de porções deve conter apenas números!
+                         </div>
+                    </div>
+                    <div class="input-field col s6">
+                         <input  id="precoCombo" name="preco" type="text" class="validate" ng-model="combo.preco" ng-required="true" ng-pattern="/^\d+.\d+$/">
+                         <label class="active" for="precoCombo">Preço do combo (R$)</label>
+                         <div class="card-panel red lighten-1" ng-show="cadastroCombo.preco.$error.required && cadastroCombo.preco.$dirty">
+                              Por favor, preencha o preço do combo!
+                         </div>
+                         <div class="card-panel red lighten-1" ng-show="cadastroCombo.preco.$error.pattern">
+                              O campo preço deve ter o formato 0.0!
+                         </div>
+                    </div>
+                    <div class="input-field col s6">
+                         <input  id="descricaoCombo" name="descricao" type="text" class="validate" ng-model="combo.descricao">
+                         <label class="active" for="descricaoCombo">Descrição</label>
+                    </div>
+                    <div class="input-field col s6">
+                         <div class="input-field col s6">
+                              <div class="file-field input-field">
+                                  <div class="btn">
+                                     <span>Imagem</span>
+                                     <input type="file">
+                                  </div>
+                                  <div class="file-path-wrapper">
+                                     <input class="file-path validate" type="text">
+                                  </div>
+                              </div>
+                         </div>
+                    </div>
+                    <p>
+                         <input type="checkbox" class="filled-in" id="filled-in-box" ng-model="combo.exibir"/>
+                         <label for="filled-in-box">Exibir no cardápio(marque para exibir)</label>
+                    </p>
+               </form>
+
+               <div class="row">
+                    <a class="waves-effect waves-light btn lg-max" ng-disabled="cadastroCombo.$invalid" ng-click="cadastraCombo(combo)">Cadastrar combo</a>
+                    <a class="waves-effect waves-light btn lg-max" href="#!/combos">Voltar</a>
+               </div>
+          </div>
+     </div>
+</div>
+
+<script>
+    $( document ).ready(function(){
+        $('select').material_select();
+    })
+</script>
