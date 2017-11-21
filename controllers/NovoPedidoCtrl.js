@@ -19,7 +19,8 @@ app.controller("NovoPedidoCtrl",function($scope){
 		return new Array(num);
     }	
 
-    $scope.getStringComplementos = function(complementos){
+    getStringComplementos = function(complementos){
+        console.log(complementos);
         var stringComplementos = "";
         for(var i = 0; i < complementos.length; i++){
             if(i == (complementos.length - 1)){
@@ -32,34 +33,49 @@ app.controller("NovoPedidoCtrl",function($scope){
         return stringComplementos;
     }
     
-
-    $scope.combosCadastrados = [
-        {id:1, nome:"Kit Doidi", qntComplementos: 2, preco: 32.5},
-        {id:2, nome:"Vem Gordura", qntComplementos: 3, preco: 40.5},
-        {id:3, nome:"Ventania", qntComplementos: 4, preco: 25.6},
+    $scope.produtosCadastrados = [
+        {id:1, nome:"Kit Doidi", tipo:"combo", qntComplementos: 2, preco: 32.5},
+        {id:2, nome:"Vem Gordura", tipo:"combo", qntComplementos: 3, preco: 40.5},
+        {id:3, nome:"Ventania", tipo:"combo", qntComplementos: 4, preco: 25.6},
+        {id:4, nome:"Batata Suprema", tipo:"porcao", preco: 12.5},
+        {id:5, nome:"Aipim Doido", tipo:"porcao", preco: 10.5},
+        {id:6, nome:"Polenta Maluca", tipo:"porcao", preco: 8.5},
+        {id:7, nome:"Coca Cola 2L", tipo:"bebida", preco: 8.5},
+        {id:8, nome:"Suco Laranja 300ml", tipo:"bebida", preco: 4.5},
+        {id:9, nome:"Cerveja Brahma Lata", tipo:"bebida", preco: 6.5},
     ];
 
-    $scope.porcoesCadastradas = [
-        {id:1, nome:"Batata Suprema", preco: 12.5},
-        {id:2, nome:"Aipim Doido", preco: 10.5},
-        {id:3, nome:"Polenta Maluca", preco: 8.5},
-    ];
 
-    $scope.bebidasCadastradas = [
-        {nome:"Coca Cola 2L", preco: 8.5},
-        {nome:"Suco Laranja 300ml", preco: 4.5},
-        {nome:"Cerveja Brahma Lata", preco: 6.5},
-    ];
+    // $scope.combosCadastrados = [
+    //     {id:1, nome:"Kit Doidi", qntComplementos: 2, preco: 32.5},
+    //     {id:2, nome:"Vem Gordura", qntComplementos: 3, preco: 40.5},
+    //     {id:3, nome:"Ventania", qntComplementos: 4, preco: 25.6},
+    // ];
+
+    // $scope.porcoesCadastradas = [
+    //     {id:1, nome:"Batata Suprema", preco: 12.5},
+    //     {id:2, nome:"Aipim Doido", preco: 10.5},
+    //     {id:3, nome:"Polenta Maluca", preco: 8.5},
+    // ];
+
+    // $scope.bebidasCadastradas = [
+    //     {nome:"Coca Cola 2L", preco: 8.5},
+    //     {nome:"Suco Laranja 300ml", preco: 4.5},
+    //     {nome:"Cerveja Brahma Lata", preco: 6.5},
+    // ];
 
     $scope.adicionarCombo = function(combo, qntCombo){
+        $scope.selecionado = true;        
         combo = JSON.parse(combo);
         combo.quantidade = qntCombo;
         combo.complementos = $scope.ComplementosAux;
+        combo.complementosFormatado = getStringComplementos(combo.complementos);
         $scope.combos.push(angular.copy(combo));
         $scope.precoFinal += combo.quantidade * combo.preco;
-        // delete $scope.combo;
-        // delete $scope.qntCombo;
+        delete $scope.combo;
+        delete $scope.qntCombo;
         $scope.ComplementosAux = [];
+        $scope.qntComplementos = [];
     };
 
     $scope.adicionarPorcao = function(porcao, qntPorcao){
