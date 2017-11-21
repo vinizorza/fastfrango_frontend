@@ -12,11 +12,11 @@
                               </div>
                          </div>
                          <div class="col s8">
-                              <select  id="tipo_produto" name="tipo" class="validate" ng-model="produto.tipo" ng-required="true" ng-options="tipo.nome for tipo in tipos" ng-change="isPrincipal(produto)">
+                              <select  id="tipo_produto" name="tipo" class="validate" ng-model="produto.tipo" ng-required="true" ng-options="tipo for tipo in tipos" ng-change="isPrincipal(produto)">
                                    <option value="" disabled selected>Selecione um tipo de produto</option>
                               </select>
                          </div>
-                         <div class="col s4 principal" ng-if="produto.tipo.nome == 'Porção'">
+                         <div class="col s4 principal" ng-if="produto.tipo == 'Porção'">
                               <p>
                                    <input type="checkbox" class="filled-in" id="principal" ng-model="produto.principal"/>
                                    <label class="" for="principal">Porção principal</label>

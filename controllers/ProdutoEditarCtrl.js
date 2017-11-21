@@ -3,10 +3,10 @@ app.controller("ProdutoEditarCtrl",function($scope, $routeParams, $location, pro
      //$scope.produto = produto.data;
 
      $scope.tipos = [
-          {nome:"Porção"},
-          {nome:"Bebida"},
-          {nome:"Outros"}
-     ]
+        "Porção",
+        "Bebida",
+        "Outros"
+     ];
 
      $scope.produto = {id:'1', nome:"Frango 500g", preco:"15.50",  desativado:false, descricao:"", imagem:"", tipo:{nome:"Porção"}, principal:true};
 

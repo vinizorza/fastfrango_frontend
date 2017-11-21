@@ -3,10 +3,10 @@ app.controller("ProdutoCriarCtrl",function($scope, $location){
      //$scope.produto = produto.data;
 
      $scope.tipos = [
-          {nome:"Porção"},
-          {nome:"Bebida"},
-          {nome:"Outros"}
-     ]
+        "Porção",
+        "Bebida",
+        "Outros"
+     ];
 
      $scope.isPrincipal = function(produto){
           if(produto.tipo.nome != "Porção"){
