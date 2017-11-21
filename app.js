@@ -28,18 +28,28 @@ app.config(function($routeProvider){
     });
 
     $routeProvider.when("/produtos",{
-        controller:"ProdutoCtrl",
-        templateUrl:"view/produtos.html"
+        controller:"ProdutosCtrl",
+        templateUrl:"view/produtos.html",
+        resolve:{
+             produtos: function(produtosAPI){
+                  return produtosAPI.getProdutos();
+             }
+        }
     });
 
     $routeProvider.when("/produtos/novo",{
-       controller:"ProdutoCtrl",
-       templateUrl:"view/produto.html"
+       controller:"ProdutoCriarCtrl",
+       templateUrl:"view/produto.html",
     });
 
-    $routeProvider.when("/porcoes/editar/:porcaoId",{
-       controller:"PorcaoCtrl",
-       templateUrl:"view/Porcao.html"
+    $routeProvider.when("/produtos/editar/:produtoId",{
+       controller:"ProdutoEditarCtrl",
+       templateUrl:"view/produto.html",
+       resolve:{
+            produto: function(produtosAPI, $route){
+                 return produtosAPI.getProduto($route.current.params.produtoId);
+            }
+       }
     });
 
     $routeProvider.when("/pedidos",{

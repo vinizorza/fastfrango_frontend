@@ -1,77 +1,29 @@
 app.controller("CardapioCtrl",function($scope, $location){
 
-     var mapa = {};
-     var saidaCombo = {};
-     var saidaPorcao = {};
-     var saidaBebida = {};
-
      $scope.combos = [
-          {id:1, nome:"Combo 1", preco:"R$:10,00", complementos: 3, quantidade: 10, desativado:false},
-          {id:2, nome:"Combo 2", preco:"R$:15,00", complementos: 2, quantidade: 10, desativado:true},
-          {id:3, nome:"Combo 3", preco:"R$:18,00", complementos: 4, quantidade: 10, desativado:false},
-
+         {id:1, nome:"Combo 1", preco:"15.50", porcao_principal:{id:'1', nome:"Frango 500g", preco:"15.50",  desativado:false, descricao:"", imagem:"", tipo:{id: 1, nome:"Porção"}, principal:true}, qtd_complementos: 3, desativado:false},
+         {id:2, nome:"Combo 2", preco:"20.00", porcao_principal:{id:'4', nome:"porção 1kg", preco:"32.00", desativado:true, descricao:"", imagem:"", tipo:{id: 1, nome:"Porção"}, principal:true}, qtd_complementos: 2, desativado:true},
+         {id:3, nome:"Combo 3", preco:"22.00", porcao_principal:{id:'4', nome:"porção 1kg", preco:"32.00", desativado:true, descricao:"", imagem:"", tipo:{id: 1, nome:"Porção"}, principal:true}, qtd_complementos: 4, desativado:false},
+         {id:4, nome:"Combo 4", preco:"32.00", porcao_principal:{id:'1', nome:"Frango 500g", preco:"15.50", desativado:false, descricao:"", imagem:"", tipo:{id: 1, nome:"Porção"}, principal:true}, qtd_complementos: 1, desativado:false},
+         {id:5, nome:"Combo 5", preco:"18.00", porcao_principal:{id:'1', nome:"Frango 500g", preco:"15.50", desativado:false, descricao:"", imagem:"", tipo:{id: 1, nome:"Porção"}, principal:true}, qtd_complementos: 3, desativado:false}
      ]
 
-     $scope.porcoes = [
-          {id:4, nome:"porção 1", preco:"R$:10,00", quantidade: 10, desativado:false},
-          {id:5, nome:"porção 2", preco:"R$:15,00", quantidade: 10, desativado:true},
-          {id:6, nome:"porção 3", preco:"R$:18,00", quantidade: 10, desativado:false},
-     ]
-
-     $scope.bebidas = [
-          {id:7, nome:"bebida 1", preco:"R$:10,00", quantidade: 10, desativado:false},
-          {id:8, nome:"bebida 2", preco:"R$:15,00", quantidade: 10, desativado:true},
-          {id:9, nome:"bebida 3", preco:"R$:18,00", quantidade: 10, desativado:false},
+     $scope.produtos = [
+          {id:1, nome:"Frango 500g", preco:"15.50",  desativado:false, descricao:"", imagem:"", tipo:{id: 1, nome:"Porção"}, principal:true},
+          {id:2, nome:"Coca cola 600 ml", preco:"5.00",  desativado:false, descricao:"", imagem:"", tipo:{id:2, nome:"Bebida"}},
+          {id:3, nome:"Batata frita", preco:"12.00",  desativado:false, descricao:"", imagem:"", tipo:{id: 1, nome:"Porção"}, principal:false},
+          {id:4, nome:"porção 1kg", preco:"32.00", desativado:true, descricao:"", imagem:"", tipo:{id: 1, nome:"Porção"}, principal:true},
+          {id:5, nome:"Polenta", preco:"10.00", desativado:false, descricao:"", imagem:"", tipo:{id: 1, nome:"Porção"}, principal:false}
      ]
 
 
-     var carregarItensMenu = function(){
-          $scope.combos.forEach(function(item){
-               mapa[item.nome] = angular.copy(item);
-          });
-          $scope.porcoes.forEach(function(item){
-               mapa[item.nome] = angular.copy(item);
-          });
-          $scope.bebidas.forEach(function(item){
-               mapa[item.nome] = angular.copy(item);
-          });
-
-     }
-
-     $scope.isItemDesativado = function(){
-          return (Object.keys(saidaCombo).length > 0) || (Object.keys(saidaBebida).length > 0) || (Object.keys(saidaPorcao).length > 0);
-     }
-
-     $scope.verificaEstadoCombo = function(item){
-          if(mapa[item.nome].desativado != item.desativado){
-               saidaCombo[item.nome] = angular.copy(item);
+     $scope.desativarElemento = function(elemento){
+          if (elemento.tipo == undefined){
+               console.log(elemento);
+               console.log("put /combos");
           }else{
-               delete saidaCombo[item.nome];
+               console.log(elemento);
+               console.log("put /produtos");
           }
      }
-
-     $scope.verificaEstadoBebida = function(item){
-          if(mapa[item.nome].desativado != item.desativado){
-               saidaBebida[item.nome] = angular.copy(item);
-          }else{
-               delete saidaBebida[item.nome];
-          }
-     }
-
-     $scope.verificaEstadoPorcao = function(item){
-          if(mapa[item.nome].desativado != item.desativado){
-               saidaPorcao[item.nome] = angular.copy(item);
-          }else{
-               delete saidaPorcao[item.nome];
-          }
-     }
-
-     $scope.salvaModificacoes = function(){
-          console.log(Object.values(saidaCombo));
-          console.log(Object.values(saidaBebida));
-          console.log(Object.values(saidaPorcao));
-          $location.path("/home");
-     }
-
-     carregarItensMenu();
 });
