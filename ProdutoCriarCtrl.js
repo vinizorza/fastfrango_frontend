@@ -1,0 +1,25 @@
+app.controller("ProdutoCriarCtrl",function($scope, $location, produtosAPI){
+
+     //$scope.produto = produto.data;
+
+     $scope.tipos = [
+        "Porção",
+        "Bebida",
+        "Outros"
+     ];
+
+     $scope.isPrincipal = function(produto){
+          if(produto.tipo.nome != "Porção"){
+               delete produto['principal'];
+          }
+     }
+
+
+     $scope.cadastraProduto = function(produto){
+          console.log("criar");
+          console.log($scope.produto);
+          produtosAPI.saveProduto(produto);
+          $location.path("/produtos");
+     }
+
+});
