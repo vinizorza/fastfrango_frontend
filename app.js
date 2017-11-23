@@ -9,7 +9,12 @@ app.config(function($routeProvider){
 
     $routeProvider.when("/novopedido",{
         controller:"NovoPedidoCtrl",
-        templateUrl:"view/NovoPedido.html"
+        templateUrl:"view/NovoPedido.html",
+        resolve:{
+            produtos: function(produtosAPI){
+                 return produtosAPI.getProdutos();
+            }
+       }       
     });
 
     $routeProvider.when("/combos",{

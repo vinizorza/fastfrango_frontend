@@ -8,7 +8,6 @@ app.factory("produtosAPI", function($http, config){
      };
 
      var _saveProduto = function(produto){
-		 alert("TESTE");
           return $http.post(config.baseUrl + "/produtos.json", produto);
      };
 

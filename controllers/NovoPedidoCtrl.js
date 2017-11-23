@@ -1,4 +1,4 @@
-app.controller("NovoPedidoCtrl",function($scope){
+app.controller("NovoPedidoCtrl",function($scope, produtos){
 
     $scope.combos = [];
     $scope.porcoes = [];
@@ -32,7 +32,9 @@ app.controller("NovoPedidoCtrl",function($scope){
         }
         return stringComplementos;
     }
-    
+   
+    //$scope.produtosCadastrados = produtos.data;
+
     $scope.produtosCadastrados = [
         {id:1, nome:"Kit Doidi", tipo:"combo", qntComplementos: 2, preco: 32.5},
         {id:2, nome:"Vem Gordura", tipo:"combo", qntComplementos: 3, preco: 40.5},
@@ -45,6 +47,9 @@ app.controller("NovoPedidoCtrl",function($scope){
         {id:9, nome:"Cerveja Brahma Lata", tipo:"bebida", preco: 6.5},
     ];
 
+
+    console.log(produtos.data);
+    console.log($scope.produtosCadastrados);
 
     // $scope.combosCadastrados = [
     //     {id:1, nome:"Kit Doidi", qntComplementos: 2, preco: 32.5},
