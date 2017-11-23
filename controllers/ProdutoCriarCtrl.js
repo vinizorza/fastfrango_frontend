@@ -1,4 +1,4 @@
-app.controller("ProdutoCriarCtrl",function($scope, $location){
+app.controller("ProdutoCriarCtrl",function($scope, $location, produtosAPI){
 
      //$scope.produto = produto.data;
 
@@ -18,6 +18,7 @@ app.controller("ProdutoCriarCtrl",function($scope, $location){
      $scope.cadastraProduto = function(produto){
           console.log("criar");
           console.log($scope.produto);
+          produtosAPI.saveProduto(produto);
           $location.path("/produtos");
      }
 

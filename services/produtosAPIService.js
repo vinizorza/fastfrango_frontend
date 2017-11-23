@@ -1,6 +1,6 @@
 app.factory("produtosAPI", function($http, config){
      var _getProdutos = function(){
-          return $http.get(config.baseUrl + "/#!/produtos");
+          return $http.get(config.baseUrl + "/produtos.json");
      };
 
      var _getProduto = function(produtoId){
@@ -8,17 +8,18 @@ app.factory("produtosAPI", function($http, config){
      };
 
      var _saveProduto = function(produto){
-          return $http.post(config.baseUrl + "/produtos", produto);
+		 alert("TESTE");
+          return $http.post(config.baseUrl + "/produtos.json", produto);
      };
 
      var _updateProduto = function(produto){
-          return $http.post(config.baseUrl + "/produtos/" + produto.id, produto);
+          return $http.put(config.baseUrl + "/produtos/" + produto.id, produto);
      };
 
      return{
           getProdutos: _getProdutos,
           getProduto: _getProduto,
           saveProduto: _saveProduto,
-          saveProduto: _updateProduto
+          updateProduto: _updateProduto
      };
 });
