@@ -1,6 +1,4 @@
-app.controller("ProdutoEditarCtrl",function($scope, $routeParams, $location, produto){
-
-     //$scope.produto = produto.data;
+app.controller("ProdutoEditarCtrl",function($scope, utilService, $location, produto, produtosAPI, $route){
 
      $scope.tipos = [
         "Porção",
@@ -8,7 +6,7 @@ app.controller("ProdutoEditarCtrl",function($scope, $routeParams, $location, pro
         "Outros"
      ];
 
-     $scope.produto = {id:'1', nome:"Frango 500g", preco:"15.50",  desativado:false, descricao:"", imagem:"", tipo:{nome:"Porção"}, principal:true};
+     $scope.produto = produto.data;
 
      $scope.isPrincipal = function(produto){
           if(produto.tipo.nome != "Porção"){
@@ -18,8 +16,8 @@ app.controller("ProdutoEditarCtrl",function($scope, $routeParams, $location, pro
 
 
      $scope.cadastraProduto = function(produto){
-          console.log("editar");
-          console.log($scope.produto);
+
+          produtosAPI.updateProduto(produto,$route.current.params.produtoId);
           $location.path("editar/produtos");
      }
 

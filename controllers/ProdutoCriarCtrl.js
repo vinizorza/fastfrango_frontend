@@ -16,8 +16,6 @@ app.controller("ProdutoCriarCtrl",function($scope, $location, produtosAPI){
 
 
      $scope.cadastraProduto = function(produto){
-          console.log("criar");
-          console.log($scope.produto);
           produtosAPI.saveProduto(produto);
           $location.path("/produtos");
      }

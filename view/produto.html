@@ -23,6 +23,7 @@
                               </p>
 
                          </div>
+
                          <div class="input-field col s12">
                               <input  id="preco_produto" name="preco" type="text" class="validate" ng-model="produto.preco" ng-required="true" ng-pattern="/^\d+.\d+$/">
                               <label class="active" for="preco_produto">Preço do produto (R$)</label>
@@ -42,21 +43,39 @@
                               <div class="file-field input-field">
                                   <div class="btn">
                                      <span>Imagem</span>
-                                     <input type="file" fileread="produto.imagem" >
+                                     <input type="file"  ng-file-model="produto.imagem">
                                   </div>
                                   <div class="file-path-wrapper">
-                                     <input class="file-path validate" type="text">
+                                       <div class="box-image">
+                                            <table class="centered">
+                                                 <thead>
+                                                      <tr>
+                                                           <th>
+                                                                 {{produto.imagem.name}}
+                                                           </th>
+                                                      </tr>
+
+                                                 </thead>
+                                                 <tbody>
+                                                      <tr>
+                                                           <td>
+                                                                <div ng-if="produto.imagem != undefined">
+                                                                    <img class="responsive-img" ng-src="{{produto.imagem.data}}">
+                                                               </div>
+                                                           </td>
+                                                      </tr>
+                                                 </tbody>
+                                            </table>
+                                      </div>
                                   </div>
                               </div>
                          </div>
-
-                         <div class="col s12">
+                         <div class="col s12" style="margin-top:30px">
                               <p>
                                    <input type="checkbox" class="filled-in" id="exibir" ng-model="produto.desativado"/>
-                                   <label class="" for="exibir">Desativar no cardápio(marque para desativar)</label>
+                                   <label  class="" for="exibir">Desativar no cardápio (marque para desativar)</label>
                               </p>
                          </div>
-
                     </form>
                </div>
 

@@ -1,10 +1,6 @@
-app.controller("ProdutosCtrl",function($scope, produtos){
-	
-	var converteArray = function(json){
-			var array = [] ;
-			
-	}
-     $scope.produtos = JSON.parse(produtos.data);
+app.controller("ProdutosCtrl",function($scope, produtos, utilService,produtosAPI){
+
+     $scope.produtos = utilService.convertJsonToArray(produtos.data);
 
      /*
      $scope.produtos = [
@@ -17,7 +13,7 @@ app.controller("ProdutosCtrl",function($scope, produtos){
 	*/
 
      $scope.deletarProduto = function(produto){
-          console.log("delete /produtos/id");
+		produtosAPI.deleteProduto(produto);
           var indiceDoProduto= $scope.produtos.indexOf(produto);
           $scope.produtos.splice(indiceDoProduto, 1);
      }

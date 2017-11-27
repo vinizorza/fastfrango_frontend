@@ -1,4 +1,4 @@
-var app = angular.module("fastFrangoApp", ['ngRoute']);
+var app = angular.module("fastFrangoApp", ['ngRoute',"ng-file-model"]);
 
 app.config(function($routeProvider){
 
@@ -14,7 +14,7 @@ app.config(function($routeProvider){
             produtos: function(produtosAPI){
                  return produtosAPI.getProdutos();
             }
-       }       
+       }
     });
 
     $routeProvider.when("/combos",{

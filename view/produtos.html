@@ -32,7 +32,7 @@
                          <tr ng-repeat="produto in produtos | filter:{nome:criterioDeBusca}">
                               <td>{{produto.nome}}</td>
                               <td>{{produto.preco}}</td>
-                              <td>{{produto.tipo.nome}}</td>
+                              <td>{{produto.tipo}}</td>
                               <td>
                                    <a class="waves-effect waves-light btn" href="#!/produtos/editar/{{produto.id}}">Editar</a>
                                    <a class="waves-effect waves-light btn red" ng-click="deletarProduto(produto)">Excluir</a>
