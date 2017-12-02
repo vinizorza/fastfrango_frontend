@@ -1,71 +1,100 @@
-  <!DOCTYPE html>
-  <html>
-    <head>
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link rel="stylesheet" href="css/app.css">
-      <link rel="stylesheet" href="lib/materialize/materialize.css">
+       <!DOCTYPE html>
+       <html>
+         <head>
+           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+           <link rel="stylesheet" href="css/app.css">
+           <link rel="stylesheet" href="lib/materialize/materialize.css">
 
-      <script type="text/javascript" src="lib/jquery/jquery-3.2.1.js"></script>
-      <script src="lib/materialize/materialize.js"></script>
+           <script type="text/javascript" src="lib/jquery/jquery-3.2.1.js"></script>
+           <script src="lib/materialize/materialize.js"></script>
 
-      <script src="lib/angular-1.6.6/angular.js"></script>
-      <script src="lib/angular-1.6.6/angular-route.js"></script>
-      <script src="bower_components/ng-file-model/ng-file-model.js"></script>
+           <script src="lib/angular-1.6.6/angular.js"></script>
+           <script src="lib/angular-1.6.6/angular-route.js"></script>
+           <script src="bower_components/ng-file-model/ng-file-model.js"></script>
 
-      <!-- App -->
-      <script src="app.js"></script>
+           <!-- App -->
+           <script src="app.js"></script>
 
-      <!-- Controllers -->
-      <script src="controllers/HomeCtrl.js"></script>
-      <script src="controllers/NovoPedidoCtrl.js"></script>
-      <script src="controllers/CombosCtrl.js"></script>
-      <script src="controllers/PorcaoCtrl.js"></script>
-      <script src="controllers/CardapioCtrl.js"></script>
-      <script src="controllers/PedidosCtrl.js"></script>
-      <script src="controllers/BebidasCtrl.js"></script>
-      <script src="controllers/AltProdCtrl.js"></script>
-      <script src="controllers/EstoqueCtrl.js"></script>
-      <script src="controllers/RelatorioCtrl.js"></script>
-      <script src="controllers/ProdutoEditarCtrl.js"></script>
-      <script src="controllers/ProdutosCtrl.js"></script>
-      <script src="controllers/ProdutoCriarCtrl.js"></script>
+           <!-- Controllers -->
+           <script src="controllers/HomeCtrl.js"></script>
+           <script src="controllers/NovoPedidoCtrl.js"></script>
+           <script src="controllers/CombosCtrl.js"></script>
+           <script src="controllers/PorcaoCtrl.js"></script>
+           <script src="controllers/CardapioCtrl.js"></script>
+           <script src="controllers/PedidosCtrl.js"></script>
+           <script src="controllers/BebidasCtrl.js"></script>
+           <script src="controllers/AltProdCtrl.js"></script>
+           <script src="controllers/EstoqueCtrl.js"></script>
+           <script src="controllers/RelatorioCtrl.js"></script>
+           <script src="controllers/ProdutoEditarCtrl.js"></script>
+           <script src="controllers/ProdutosCtrl.js"></script>
+           <script src="controllers/ProdutoCriarCtrl.js"></script>
 
-      <!-- Directives
+           <!-- Directives
 
-      <!-- Services-->
-     <script src="services/produtosAPIService.js"></script>
-     <script src="services/utilService.js"></script>
+           <!-- Services-->
+          <script src="services/produtosAPIService.js"></script>
+          <script src="services/utilService.js"></script>
 
-     <!-- Config-->
-   <script src="constant/config.js"></script>
+          <!-- Constant-->
+          <script src="constant/config.js"></script>
 
-      <meta charset="utf8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+          <!-- Config-->
+          <script src="config/InterceptorConfig.js"></script>
 
-    <body ng-app="fastFrangoApp">
+          <!-- Interceptor-->
+          <script src="interceptors/errorInterceptor.js"></script>
+          <script src="interceptors/loadingInterceptor.js"></script>
 
-      <script>
-        $( document ).ready(function(){
-          $(".button-collapse").sideNav();
-          $('select').material_select();
-        })
-      </script>
+           <meta charset="utf8"/>
+           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+         </head>
 
-      <nav>
-          <div class="nav-wrapper  red darken-4">
-            <a href="#!" class="brand-logo center">Fast Frango</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-              <li><a href="{{host}}">INÍCIO</a></li>
-            </ul>
-            <ul class="side-nav" id="mobile-demo">
-              <li><a href="{{host}}">INÍCIO</a></li>
-            </ul>
-          </div>
-      </nav>
+         <body ng-app="fastFrangoApp">
 
-      <div class="slide-animate" ng-view=""></div>
+           <script>
+             $( document ).ready(function(){
+               $(".button-collapse").sideNav();
+               $('select').material_select();
+             })
+           </script>
 
-    </body>
-  </html>
+           <nav>
+               <div class="nav-wrapper  red darken-4">
+                 <a href="#!" class="brand-logo center">Fast Frango</a>
+                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                 <ul class="right hide-on-med-and-down">
+                   <li><a href="{{host}}">INÍCIO</a></li>
+                 </ul>
+                 <ul class="side-nav" id="mobile-demo">
+                   <li><a href="{{host}}">INÍCIO</a></li>
+                 </ul>
+               </div>
+           </nav>
+           
+           <div ng-show="loading">
+                <div class="container center-align">
+                     <div class="card grey lighten-3">
+                          <div class="card-content">
+                               <div class="preloader-wrapper big active">
+                                   <div class="spinner-layer spinner-blue-only">
+                                     <div class="circle-clipper left">
+                                       <div class="circle"></div>
+                                     </div><div class="gap-patch">
+                                       <div class="circle"></div>
+                                     </div><div class="circle-clipper right">
+                                       <div class="circle"></div>
+                                     </div>
+                                   </div>
+                              </div>
+                          </div>
+                     </div>
+                </div>
+           </div>
+           <div ng-hide="loading">
+               <div class="slide-animate" ng-view=""></div>
+           </div>
+
+
+         </body>
+       </html>

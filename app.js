@@ -62,6 +62,10 @@ app.config(function($routeProvider){
         templateUrl:"view/Pedidos.html"
     });
 
+    $routeProvider.when("/error",{
+        templateUrl:"view/error.html"
+    });
+
     $routeProvider.when("/cardapio",{
         controller:"CardapioCtrl",
         templateUrl:"view/Cardapio.html"

@@ -1,4 +1,4 @@
-app.controller("ProdutoCriarCtrl",function($scope, $location, produtosAPI){
+app.controller("ProdutoCriarCtrl",function($scope, $window, $route, produtosAPI){
 
      //$scope.produto = produto.data;
 
@@ -16,8 +16,12 @@ app.controller("ProdutoCriarCtrl",function($scope, $location, produtosAPI){
 
 
      $scope.cadastraProduto = function(produto){
-          produtosAPI.saveProduto(produto);
-          $location.path("/produtos");
+          produtosAPI.saveProduto(produto).then(function(){
+               $window.location.href = "/#!/produtos";
+               Materialize.toast('Produto cadastrado com sucesso!', 4000);
+          });
+
+
      }
 
 });

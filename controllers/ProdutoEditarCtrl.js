@@ -1,4 +1,4 @@
-app.controller("ProdutoEditarCtrl",function($scope, utilService, $location, produto, produtosAPI, $route){
+app.controller("ProdutoEditarCtrl",function($scope, utilService, $window, produto, produtosAPI, $route){
 
      $scope.tipos = [
         "Porção",
@@ -17,8 +17,13 @@ app.controller("ProdutoEditarCtrl",function($scope, utilService, $location, prod
 
      $scope.cadastraProduto = function(produto){
 
-          produtosAPI.updateProduto(produto,$route.current.params.produtoId);
-          $location.path("editar/produtos");
+          produtosAPI.updateProduto(produto,$route.current.params.produtoId).then(function(){
+               $window.location.href = "/#!/produtos";
+               Materialize.toast('Produto cadastrado com sucesso!', 4000);
+          }).catch(function(response){
+               console.log(response);
+          });
+
      }
 
 });
