@@ -20,8 +20,6 @@ app.controller("ProdutoEditarCtrl",function($scope, utilService, $window, produt
           produtosAPI.updateProduto(produto,$route.current.params.produtoId).then(function(){
                $window.location.href = "/#!/produtos";
                Materialize.toast('Produto cadastrado com sucesso!', 4000);
-          }).catch(function(response){
-               console.log(response);
           });
 
      }
