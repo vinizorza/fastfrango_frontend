@@ -13,8 +13,10 @@ app.controller("ProdutosCtrl",function($scope, produtos, utilService,produtosAPI
 	*/
 
      $scope.deletarProduto = function(produto){
-		produtosAPI.deleteProduto(produto);
-          var indiceDoProduto= $scope.produtos.indexOf(produto);
-          $scope.produtos.splice(indiceDoProduto, 1);
+		produtosAPI.deleteProduto(produto).then(function(){
+               var indiceDoProduto= $scope.produtos.indexOf(produto);
+               $scope.produtos.splice(indiceDoProduto, 1);
+               Materialize.toast('Produto excluido com sucesso!', 4000);
+          });
      }
 });
