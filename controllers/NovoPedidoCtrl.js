@@ -1,8 +1,6 @@
 app.controller("NovoPedidoCtrl",function($scope, produtos, utilService, produtosAPI){
 
     $scope.produtosCadastrados = utilService.convertJsonToArray(produtos.data);
-    console.log($scope.produtosCadastrados);
-
     $scope.combos = [];
     $scope.porcoes = [];
     $scope.bebidas = [];
@@ -26,7 +24,6 @@ app.controller("NovoPedidoCtrl",function($scope, produtos, utilService, produtos
 
     //Converte a lista de complementos, para uma frase amigável.
     getStringComplementos = function(complementos){
-        console.log(complementos);
         var stringComplementos = "";
         for(var i = 0; i < complementos.length; i++){
             if(i == (complementos.length - 1)){
@@ -102,30 +99,32 @@ app.controller("NovoPedidoCtrl",function($scope, produtos, utilService, produtos
     };
 
     $scope.salvarPedido = function(){
-        // var pedido = [
-        //     combos = [],
-        //     porcoes = [],
-        //     bebidas = [],
-        //     precoFinal = [],
-        //     observacao = []
-        // ];
-
         var pedido = {
-            'combos' : {},
-            'porcoes' : {},
-            'bebidas' : {},
-            'precoFinal' : {},
-            'observacao' : {}
+            'combos' : [],
+            'porcoes' : [],
+            'bebidas' : [],
+            'precoFinal' : 0,
+            'observacao' : ''
         };
 
-        // pedido["combos"].push($scope.combos);
-        // pedido["porcoes"].push($scope.porcoes);
-        // pedido["bebidas"].push($scope.bebidas);
-        // pedido["precoFinal"].push($scope.precoFinal);
-        // pedido["observacao"].push($scope.observacao);
-        //pedido.push($scope.clienteo);
+        for(var i = 0; i < $scope.combos.length; i++){
+            pedido.combos.push($scope.combos[i]);
+        }
+
+        for(var i = 0; i < $scope.porcoes.length; i++){
+            pedido.porcoes.push($scope.porcoes[i]);
+        }
+
+        for(var i = 0; i < $scope.bebidas.length; i++){
+            pedido.bebidas.push($scope.bebidas[i]);
+        }
+
+        pedido.precoFinal = $scope.precoFinal;
+        pedido.observacao = $scope.observacao;
+
         console.log(pedido);
 
+        //Salvar pedido
     };
     
     
