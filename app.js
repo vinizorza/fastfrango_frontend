@@ -80,7 +80,12 @@ app.config(function($routeProvider){
 
     $routeProvider.when("/pedidos",{
         controller:"PedidosCtrl",
-        templateUrl:"view/Pedidos.html"
+        templateUrl:"view/Pedidos.html",
+        resolve:{
+            pedidos: function(pedidosAPI){
+                 return pedidosAPI.getPedidos();
+            }
+       }
     });
 
     $routeProvider.when("/error",{

@@ -15,8 +15,7 @@
                             <thead>
                                 <tr>
                                     <th>Cliente</th>
-                                    <th>Local</th>
-                                    <th>Combos</th>
+                                    <!-- <th>Combos</th> -->
                                     <th>Porções</th>
                                     <th>Bebidas</th>
                                     <th>Preço</th>  
@@ -25,12 +24,11 @@
                             </thead>                            
                             <tbody>
                                 <tr ng-repeat="pedido in todosPedidos | filter: { status: 'pendente' }">
-                                    <td>{{pedido.nomeCliente}}</td>
-                                    <td>{{pedido.local}}</td>
-                                    <td>{{pedido.combos}}</td>
+                                    <td>{{pedido.cliente}}</td>
+                                    <!-- <td>{{pedido.combos}}</td> -->
                                     <td>{{pedido.porcoes}}</td>
                                     <td>{{pedido.bebidas}}</td>
-                                    <td>{{pedido.preco}}</td>
+                                    <td>{{pedido.precoFinal}}</td>
                                     <td><a class="waves-effect waves-light btn green" ng-click="confirmarPedido(pedido)">Confirmar</a></td>
                                 </tr>
                             </tbody>

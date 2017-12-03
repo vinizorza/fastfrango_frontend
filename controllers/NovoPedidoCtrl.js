@@ -1,4 +1,4 @@
-app.controller("NovoPedidoCtrl",function($scope, produtos, utilService, combos, pedidosAPI){
+app.controller("NovoPedidoCtrl",function($scope, produtos, utilService, combos, pedidosAPI, $window){
 
     $scope.produtosCadastrados = utilService.convertJsonToArray(produtos.data);
     $scope.combosCadastrados = utilService.convertJsonToArray(combos.data);
@@ -42,21 +42,6 @@ app.controller("NovoPedidoCtrl",function($scope, produtos, utilService, combos, 
         }
         return stringComplementos;
     }
-   
-    //$scope.produtosCadastrados = produtos.data;
-
-    // $scope.produtosCadastrados = [
-    //     {id:1, nome:"Kit Doidi", tipo:"combo", qntComplementos: 2, preco: 32.5},
-    //     {id:2, nome:"Vem Gordura", tipo:"combo", qntComplementos: 3, preco: 40.5},
-    //     {id:3, nome:"Ventania", tipo:"combo", qntComplementos: 4, preco: 25.6},
-    //     {id:4, nome:"Batata Suprema", tipo:"porcao", preco: 12.5},
-    //     {id:5, nome:"Aipim Doido", tipo:"porcao", preco: 10.5},
-    //     {id:6, nome:"Polenta Maluca", tipo:"porcao", preco: 8.5},
-    //     {id:7, nome:"Coca Cola 2L", tipo:"bebida", preco: 8.5},
-    //     {id:8, nome:"Suco Laranja 300ml", tipo:"bebida", preco: 4.5},
-    //     {id:9, nome:"Cerveja Brahma Lata", tipo:"bebida", preco: 6.5},
-    // ];
-
 
     $scope.adicionarCombo = function(combo, qntCombo){
         $scope.selecionado = true;        
@@ -113,7 +98,7 @@ app.controller("NovoPedidoCtrl",function($scope, produtos, utilService, combos, 
             'precoFinal' : 0,
             'observacao' : '',
             'cliente' : '',
-            'status' : 0
+            'status' : 'pendente8'
         };
 
         for(var i = 0; i < $scope.combos.length; i++){
@@ -136,7 +121,8 @@ app.controller("NovoPedidoCtrl",function($scope, produtos, utilService, combos, 
         console.log(pedido);
 
         pedidosAPI.savePedido(pedido).then(function(){
-            // $window.location.href = "/#!/produtos";
+            $window.location.href = "/#!/home";
+            console.log("Saved succesfully");
             Materialize.toast('Pedido cadastrado com sucesso!', 4000);
        });
     };
