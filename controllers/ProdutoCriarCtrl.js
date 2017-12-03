@@ -1,6 +1,5 @@
-app.controller("ProdutoCriarCtrl",function($scope, $window, $route, produtosAPI){
+app.controller("ProdutoCriarCtrl",function($scope, $window, produtosAPI){
 
-     //$scope.produto = produto.data;
 
      $scope.tipos = [
         "Porção",

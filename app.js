@@ -19,17 +19,35 @@ app.config(function($routeProvider){
 
     $routeProvider.when("/combos",{
         controller:"CombosCtrl",
-        templateUrl:"view/combos.html"
+        templateUrl:"view/combos.html",
+        resolve:{
+             combos: function(combosAPI){
+                  return combosAPI.getCombos();
+             }
+        }
     });
 
     $routeProvider.when("/combos/novo",{
-       controller:"CombosCtrl",
-       templateUrl:"view/Combo.html"
+       controller:"ComboCriarCtrl",
+       templateUrl:"view/Combo.html",
+       resolve:{
+            produtos: function(produtosAPI){
+                 return produtosAPI.getProdutos();
+            }
+       }
     });
 
     $routeProvider.when("/combos/editar/:comboId",{
-       controller:"CombosCtrl",
-       templateUrl:"view/Combo.html"
+       controller:"ComboEditarCtrl",
+       templateUrl:"view/Combo.html",
+       resolve:{
+            combo: function(combosAPI, $route){
+                 return combosAPI.getCombo($route.current.params.comboId);
+            },
+            produtos: function(produtosAPI){
+                 return produtosAPI.getProdutos();
+            }
+       }
     });
 
     $routeProvider.when("/produtos",{
