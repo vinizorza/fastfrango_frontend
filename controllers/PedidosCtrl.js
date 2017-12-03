@@ -1,12 +1,16 @@
 app.controller("PedidosCtrl",function($scope, pedidos, pedidosAPI, utilService){
 
     $scope.todosPedidos = utilService.convertJsonToArray(pedidos.data);
-    //console.log($scope.todosPedidos);
 
-    console.log($scope.todosPedidos.bebidas);
+    
 
     for(var i = 0; i < $scope.todosPedidos.length; i++){
-        console.log($scope.todosPedidos.combos);
+        if($scope.todosPedidos[i].combos == null){
+           // console.log($scope.todosPedidos[i].combos.length);
+        }
+        // console.log($scope.todosPedidos[i].combos.length);
+        // console.log($scope.todosPedidos[i].porcoes);
+        // console.log($scope.todosPedidos[i].bebidas);
     }
 
     $scope.combosFormatados = "";
