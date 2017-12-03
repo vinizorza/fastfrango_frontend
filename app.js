@@ -13,7 +13,10 @@ app.config(function($routeProvider){
         resolve:{
             produtos: function(produtosAPI){
                  return produtosAPI.getProdutos();
-            }
+            },
+            combos: function(combosAPI){
+                return combosAPI.getCombos();
+           }
        }
     });
 

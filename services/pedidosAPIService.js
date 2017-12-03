@@ -4,21 +4,26 @@ app.factory("pedidosAPI", function($http, config){
     };
 
     var _getPedido = function(pedidoId){
-         return $http.get(config.baseUrl + "/produto/" + produtoId);
+         return $http.get(config.baseUrl + "/pedidos/" + pedidoId + ".json");
     };
 
     var _savePedido = function(pedido){
-         return $http.post(config.baseUrl + "/pedidos.json", produto);
+         return $http.post(config.baseUrl + "/pedidos.json", pedido);
     };
 
-    var _updatePedido = function(pedido){
-         return $http.post(config.baseUrl + "/produtos/" + produto.id, produto);
+    var _updatePedido = function(pedido, id){
+         return $http.put(config.baseUrl + "/pedidos/" + id + ".json", pedido);
+    };
+
+    var _deletePedido = function(pedido){
+         return $http.delete(config.baseUrl + "/pedidos/" + pedido.id + ".json");
     };
 
     return{
          getPedidos: _getPedidos,
-         getPedidos: _getProduto,
-         saveProduto: _saveProduto,
-         saveProduto: _updateProduto
+         getPedido: _getPedido,
+         savePedido: _savePedido,
+         updatePedido: _updatePedido,
+         deletePedido: _deletePedido
     };
 });

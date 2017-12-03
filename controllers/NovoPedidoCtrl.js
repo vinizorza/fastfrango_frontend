@@ -1,6 +1,12 @@
-app.controller("NovoPedidoCtrl",function($scope, produtos, utilService, produtosAPI){
+app.controller("NovoPedidoCtrl",function($scope, produtos, utilService, combos, pedidosAPI){
 
     $scope.produtosCadastrados = utilService.convertJsonToArray(produtos.data);
+    $scope.combosCadastrados = utilService.convertJsonToArray(combos.data);
+
+    console.log($scope.combosCadastrados);
+    console.log($scope.produtosCadastrados);
+
+
     $scope.combos = [];
     $scope.porcoes = [];
     $scope.bebidas = [];
@@ -12,8 +18,9 @@ app.controller("NovoPedidoCtrl",function($scope, produtos, utilService, produtos
     $scope.ComplementosAux = [];
 
     $scope.setQntComplemento = function(combo){    
-        combo = JSON.parse(combo);   
-        $scope.qntComplementos = new Array(combo.qntComplementos);
+        combo = JSON.parse(combo);
+        $scope.qntComplementos = new Array(parseInt(combo.qtd_complementos));   
+        // $scope.qntComplementos = new Array(combo.qntComplementos);
     }
 
     //Retorna um array com o número de complementos do combo
@@ -104,7 +111,9 @@ app.controller("NovoPedidoCtrl",function($scope, produtos, utilService, produtos
             'porcoes' : [],
             'bebidas' : [],
             'precoFinal' : 0,
-            'observacao' : ''
+            'observacao' : '',
+            'cliente' : '',
+            'status' : 0
         };
 
         for(var i = 0; i < $scope.combos.length; i++){
@@ -122,9 +131,14 @@ app.controller("NovoPedidoCtrl",function($scope, produtos, utilService, produtos
         pedido.precoFinal = $scope.precoFinal;
         pedido.observacao = $scope.observacao;
 
+        pedido.cliente = "Abigail";
+
         console.log(pedido);
 
-        //Salvar pedido
+        pedidosAPI.savePedido(pedido).then(function(){
+            // $window.location.href = "/#!/produtos";
+            Materialize.toast('Pedido cadastrado com sucesso!', 4000);
+       });
     };
     
     
