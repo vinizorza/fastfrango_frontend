@@ -40,6 +40,16 @@ app.config(function($routeProvider){
        }
     });
 
+    $routeProvider.when("/login",{
+        controller:"LoginCtrl",
+        templateUrl:"view/Login.html"        
+     });
+
+    $routeProvider.when("/cadastro",{
+    controller:"CadastroUsuarioCtrl",
+    templateUrl:"view/CadastroUsuario.html"        
+    });
+
     $routeProvider.when("/combos/editar/:comboId",{
        controller:"ComboEditarCtrl",
        templateUrl:"view/Combo.html",
